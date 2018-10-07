@@ -1,0 +1,42 @@
+{% extends "main/maintemplate.html" %}
+
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+	$('#django').toggleClass('active');
+
+</script>
+
+<div class="d-flex">
+
+	<div class="col-2 right_column">
+
+	</div>
+
+	<div class="col-10">
+		<h1 class="d-flex justify-content-center">django</h1>
+	</div>
+</div>
+
+<!--
+<div class="col-md-2" style="background-color: red; width: 200px;">
+
+</div>
+
+<div class="d-flex col-md-10"></div>
+<div align="center">
+
+	<div class="container" style="background-color: white">
+		<table class="table table-hover">
+			<thead><tr><th>Комнада</th><th>Описание</th></tr></thead>
+			<tbody><tr><td>django-admin startproject 'nameproject'</td><td>создание проекта django</td></tr></tbody>
+			<tbody><tr><td>python manage.py startapp 'nameapp'</td><td>создание приложения на сайте</td></tr></tbody>
+			<tbody><tr><td>python manage.py runserver</td><td>запустить сервер</td></tr></tbody>
+		</table>
+	</div>
+
+</div>-->
+
+{% endblock %}

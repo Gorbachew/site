@@ -1,0 +1,28 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+{% include "guides/includes/band_guides.html"%}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+
+</script>
+
+<div align="center">
+	<h1 id="h">Гайды</h1>
+	<h2>Здесь вся накопленная мною информация</h2>
+	<h3>Выберете нужный вам раздел</h3>
+</div>
+
+
+<!-- <script type="text/javascript">
+
+	$('#git').toggleClass('active');
+	var a = $('#navs li a:eq(2)');
+	var b = $("a");
+	alert(a.html());
+	alert('Привет ' + b.length);
+	setTimeout("$('#h').get(0).style.color = 'green'", 2000);
+
+
+</script>-->
+{% endblock %}

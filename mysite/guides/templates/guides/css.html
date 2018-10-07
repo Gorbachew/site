@@ -1,0 +1,193 @@
+{% extends "main/maintemplate.html" %}
+{% block bookmarks %}
+<div class="nav flex-column nav-pills float-right pt-5 " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+	<a class="nav-link bookmarks" id="v-pills-width-tab" data-toggle="pill" href="#v-pills-width" role="tab" aria-controls="v-pills-settings" aria-selected="false">width</a>
+	<a class="nav-link bookmarks" id="v-pills-height-tab" data-toggle="pill" href="#v-pills-height" role="tab" aria-controls="v-pills-height" aria-selected="false">height</a>
+	<a class="nav-link bookmarks" id="v-pills-margin-tab" data-toggle="pill" href="#v-pills-margin" role="tab" aria-controls="v-pills-margin" aria-selected="false">margin</a>
+	<a class="nav-link bookmarks" id="v-pills-padding-tab" data-toggle="pill" href="#v-pills-padding" role="tab" aria-controls="v-pills-padding" aria-selected="false">padding</a>
+	<a class="nav-link bookmarks" id="v-pills-font-size-tab" data-toggle="pill" href="#v-pills-font-size" role="tab" aria-controls="v-pills-font-size" aria-selected="false">font-size</a>
+	<a class="nav-link bookmarks" id="v-pills-overflow-tab" data-toggle="pill" href="#v-pills-overflow" role="tab" aria-controls="v-pills-overflow" aria-selected="false">overflow</a>
+	<a class="nav-link bookmarks" id="v-pills-position-tab" data-toggle="pill" href="#v-pills-position" role="tab" aria-controls="v-pills-position" aria-selected="false">position</a>
+</div>
+{% endblock %}
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+	$('#guides').toggleClass('active');
+	$('#css').toggleClass('active');
+</script>
+
+<div class="d-flex">
+	<!--<div class="col-2 right_column">
+
+	</div>-->
+	<div class="col-12">
+
+		<div class="container">
+			<h1 class="d-flex justify-content-center">CSS</h1>
+			<h2 class="d-flex justify-content-center">Commands</h2>
+			<p>Структура написания селекторов:</p>
+			<pre>
+			.названиеКласса{ параметры }
+
+			#названиеАйди{ параметры }
+
+			@media(min\max-width количествоПикселей px){ параметры }
+			</pre>
+
+			<div class="tab-content" id="v-pills-tabContent">
+				<div class="tab-pane fade show active" id="v-pills-height" role="tabpanel" aria-labelledby="v-pills-height-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>height:</td>
+								<td></td>
+								<td>высота (min-height минимальная высота с дальнейшим увеличением)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="v-pills-margin" role="tabpanel" aria-labelledby="v-pills-margin-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>margin:</td>
+								<td></td>
+								<td>внешний отступ</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="v-pills-padding" role="tabpanel" aria-labelledby="v-pills-padding-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>padding:</td>
+								<td></td>
+								<td>внутренний отступ</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="v-pills-font-size" role="tabpanel" aria-labelledby="v-pills-font-size-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>font-size:</td>
+								<td></td>
+								<td>размер текста (указывается в "pt")</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="v-pills-overflow" role="tabpanel" aria-labelledby="v-pills-overflow-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>overflow:</td>
+								<td> <strong>visible</strong> Отображает даже за пределами блока<br>
+									<strong>hidden</strong> Скрывает элемент за пределами блока<br>
+
+									<strong>scroll</strong> Всегда добавляются полосы прокрутки.<br>
+
+									<strong>auto</strong> Полосы прокрутки добавляются только при необходимости.<br>
+
+									<strong>inherit</strong> Наследует значение родителя.<br>
+								</td>
+								<td>управление отображением элемента в блоке</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="v-pills-width" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Параметр</th>
+								<th>Синтаксис</th>
+								<th>Описание</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>width:</td>
+								<td></td>
+								<td>ширина (min-width минимальная ширина с дальнейшим увеличением)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+					<div class="tab-pane fade" id="v-pills-position" role="tabpanel" aria-labelledby="v-pills-position-tab">
+						<table class="table table-hover table-bordered">
+							<thead>
+								<tr>
+									<th>Параметр</th>
+									<th>Синтаксис</th>
+									<th>Описание</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>position:</td>
+									<td><strong>absolute</strong> несдвигаемый элемент<br>
+										<strong>fixed</strong> движется с экраном<br>
+										<strong>relative</strong> поддается свойствам left и т.д<br>
+										<strong>static</strong> обычное отображение не поддается свойствам <br>
+										<strong> inherit</strong> наследует значение родителя </td>
+									<td>управление позицией элемента относительно других элементов</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+
+
+		</div>
+		{% endblock %}

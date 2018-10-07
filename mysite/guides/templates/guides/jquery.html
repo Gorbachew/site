@@ -1,0 +1,74 @@
+{% extends "main/maintemplate.html" %}
+
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+	$('#jQuery').toggleClass('active');
+
+</script>
+
+<div class="d-flex">
+	<div class="col-2 right_column">
+		<a href="http://jquery-docs.ru/" id="help">Сайт с подсказками</a>
+	</div>
+	<div class="col-10">
+		<div class="container">
+			<h1 class="d-flex justify-content-center">jQuery</h1>
+			<h2 class="d-flex justify-content-center">Commands</h2>
+			<p>Структура написания функции:</p>
+			<pre>
+				$('НазваниеБлока').названиеФункции()
+
+				&lt;div id=&quot;test&quot; onclick=&quot;$(&#39;#test&#39;).hide()&quot;&gt;Test&lt;/div&gt;
+				При нажатии на блок id = test он пропадет
+			</pre>
+
+			<table class="table table-hover table-bordered">
+
+				<thead>
+					<tr><th>Функции</th><th>Описание</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>$</td><td>Выставляется перед ссылкой на обьект HTML, служит вызовом библиотеки. Так-же можно написать: "jQuery" эффект такой-же</td></tr>
+					<tr><td>hide()</td><td>Исчезновение блока</td></tr>
+					<tr><td>html()</td><td>Считать содержимое блока</td></tr>
+					<tr><td></td><td></td></tr>
+				</tbody>
+
+
+			</table>
+			<pre>
+				<script type="text/javascript">
+
+					function valid(){
+						var state = $("input[name='sex']:checked").val();
+						if(!state) {
+							return $("#message").html("<font style='color:red'>Укажите ваш пол!</font><br>");
+						}
+						$("#message").hide();
+						alert(state);
+						if (state == 'male'){
+							$("#img").show();
+						}
+						else $("#img").hide();
+					}
+
+				</script>
+
+				<form action="" name="form" id="form">
+					<label for="female">Женский</label>
+					<input type="radio" id = "female" name="sex" value="female">
+					<label for="male">Мужской</label>
+					<input type="radio" id = "male" name="sex" value="male"><br>
+					<span id = "message"></span>
+					<input type="button" id ="done" onclick="return valid()" value="Готово"/>
+				</form>
+				<img src="1.jpg" id="img" style="display:none;">
+			</pre>
+
+		</div>
+
+	</div>
+	{% endblock %}

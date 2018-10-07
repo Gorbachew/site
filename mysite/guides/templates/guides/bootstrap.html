@@ -1,0 +1,54 @@
+{% extends "main/maintemplate.html" %}
+
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+	$('#bootstrap').toggleClass('active');
+
+</script>
+<div class="d-flex">
+	<div class="col-md-2 right_column">
+
+	</div>
+	<div class="col-md-10">
+		<div class="container">
+		<h1 align="center">BOOTSTRAP</h1>
+		<h2 align="center">CONTAINER</h2>
+		<table class="table table-hover table-bordered">
+			<thead><tr><th>Класс</th><th>Значение</th></tr></thead>
+			<tbody>
+			<tr><td>container</td><td>Контейнер имеет максимальную ширину</td></tr>
+			<tr><td>container-fluid</td><td>Имеет всегда 100% ширины</td></tr>
+			</tbody>
+		</table>
+		<h3 align="center">Example</h3>
+		<pre>
+			&ltdiv&gt class="container">
+
+			&lt/div&gt
+
+		</pre>
+
+
+
+
+		<h2 align="center">NAVBAR</h2>
+		<table class="table table-hover table-bordered">
+			<thead><tr><th>Класс</th><th>Значение</th></tr></thead>
+			<tbody>
+			<tr><td>navbar</td><td>определить navbar в теге nav</td></tr>
+			<tr><td>navbar-dark</td><td>выбор темной темы для navbar</td></tr>
+			<tr><td>bg-dark</td><td>выбор темной темы для background</td></tr>
+			<tr><td>sticky-top</td><td>фиксировать navbar сверху страницы при прокрутке</td></tr>
+			</tbody>
+		</table>
+		<h3 align="center">Example</h3>
+		<pre>
+			&lt;nav class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;<br/>  &lt;div class=&quot;col-md-2&quot;&gt;&lt;/div&gt;<br/>  &lt;div class=&quot;col-md-8 d-md-flex&quot;&gt;<br/>    &lt;a class=&quot;navbar-brand&quot; href=&quot;http://127.0.0.1:8000/&quot;&gt;GorbacheW&lt;/a&gt;<br/>    &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarSupportedContent&quot; aria-controls=&quot;navbarSupportedContent&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;<br/>      &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;<br/>    &lt;/button&gt;<br/><br/>    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarSupportedContent&quot;&gt;<br/>      &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;<br/>        &lt;li class=&quot;nav-item active&quot;&gt;<br/>          &lt;a class=&quot;nav-link&quot; href=&quot;http://127.0.0.1:8000/&quot;&gt;На главную&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;<br/>        &lt;/li&gt;<br/>        &lt;li class=&quot;nav-item&quot;&gt;<br/>          &lt;a class=&quot;nav-link&quot; href=&quot;http://127.0.0.1:8000/guides/&quot;&gt;Гайды&lt;/a&gt;<br/>        &lt;/li&gt;<br/>        &lt;li class=&quot;nav-item dropdown&quot;&gt;<br/>          &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; id=&quot;navbarDropdown&quot; role=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;<br/>            Узнать много нового о себе<br/>          &lt;/a&gt;<br/>          &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;navbarDropdown&quot;&gt;<br/>            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Ты клевый!&lt;/a&gt;<br/>            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Ты лучший!&lt;/a&gt;<br/>            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;<br/>            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Ты красивый!&lt;/a&gt;<br/>          &lt;/div&gt;<br/>        &lt;/li&gt;<br/>        &lt;li class=&quot;nav-item&quot;&gt;<br/>          &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot;&gt;Вперед к успеху&lt;/a&gt;<br/>        &lt;/li&gt;<br/>      &lt;/ul&gt;<br/>    &lt;!--  &lt;form class=&quot;form-inline my-2 my-lg-0&quot;&gt;<br/>        &lt;input class=&quot;form-control mr-sm-2&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;&gt;<br/>        &lt;button class=&quot;btn btn-outline-success my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;<br/>      &lt;/form&gt; --&gt;<br/>    &lt;/div&gt;<br/>  &lt;/div&gt;<br/>  &lt;div class=&quot;col-md-2&quot;&gt;&lt;/div&gt;<br/>&lt;/nav&gt;
+
+		</pre>
+		</div>
+	</div>
+	{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+	$('#html').toggleClass('active');
+
+</script>
+
+<div class="d-flex">
+	<!--<div class="col-2 right_column">
+
+			</div>-->
+	<div class="col-12">
+		<div class="container">
+			<h1 class="d-flex justify-content-center">CSS</h1>
+			<h2 class="d-flex justify-content-center">Commands</h2>
+			<p>Структура написания тегов:</p>
+			<pre>
+					Обычный тег:
+						<названиеТега названиеАтрибута = "значениеАтрибута">СодержаниеТега</названиеТега>
+						Пример:
+							&lt;header class = "head"&gt;Привет &lt;/header&gt;
+					Тег пунктуации:
+						<названиеТега>
+						Пример:
+							&lt;br&gt;
+
+					@media(min\max-width количествоПикселей px){ параметры }
+					</pre>
+
+			<table class="table table-hover table-bordered">
+				<h2 class="d-flex justify-content-center">Пунктуация</h2>
+				<thead>
+					<tr>
+						<th>Пример</th>
+						<th>Написание</th>
+						<th>Описание</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><mark>подсветка</mark></td>
+						<td>&lt;mark&gt;подсветка&lt;/mark&gt;</td>
+						<td>Тэг-выделитель для подсветки</td>
+					</tr>
+					<tr>
+						<td><del>Удаленный текст.</del></td>
+						<td>&lt;del&gt;Удаленный текст.&lt;/del&gt;</td>
+						<td>Тег - зачеркивания старой информации</td>
+					</tr>
+					<tr>
+						<td><s>Зачеркнутый.</s></td>
+						<td>&lt;s&gt;Зачеркнутый.&lt;/s&gt;</td>
+						<td>Тег зачеркивания</td>
+					</tr>
+					<tr>
+						<td><ins>Строка</ins></td>
+						<td>&lt;ins&gt;Строка&lt;/ins&gt;</td>
+						<td>Строка - дополнение к документу.</td>
+					</tr>
+					<tr>
+						<td><u>Подчеркнутая</u></td>
+						<td>&lt;u&gt;Подчеркнутая&lt;./u&gt;</td>
+						<td>Подчеркнутая строка</td>
+					</tr>
+					<tr>
+						<td><small>Мелкий шрифт</small></td>
+						<td>&lt;small&gt;Мелкий шрифт&lt;/small&gt;</td>
+						<td>Мелкий шрифт (типа нижний индекс).</td>
+					</tr>
+					<tr>
+						<td><strong>Жирный текст.</strong></td>
+						<td>&lt;strong&gt;Жирный текст.&lt;/strong&gt;</td>
+						<td>Выделение жирного шрифта</td>
+					</tr>
+					<tr>
+						<td><em>Курсив.</em></td>
+						<td>&lt;em&gt;Курсив.&lt;/em&gt;</td>
+						<td>Выделение текста курсивом</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>&lt;&gt;&lt;&gt;</td>
+						<td></td>
+					</tr>
+
+
+				</tbody>
+
+
+			</table>
+
+		</div>
+
+
+
+		{% endblock %}

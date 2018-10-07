@@ -1,0 +1,25 @@
+/*INCLUDES*/
+header{
+	width: 100%;
+}
+
+/*MAIN*/
+.mainblock{
+	background-color: #FFFFFF;
+	min-height: 900px;
+
+}
+/*GUIDES */
+.right_column{
+	overflow: hidden;
+	border: solid 6px;
+	border-color:  #EDEDED;
+	margin:5px 5px;
+	background-color: #F9F9F9;
+	min-height: 100%;
+}
+.bookmarks{
+	background-color: #FFF600;
+	opacity: .9;
+	border: 1px solid #B2FFFE;
+}

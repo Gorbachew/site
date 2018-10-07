@@ -1,0 +1,30 @@
+{% extends "main/maintemplate.html" %}
+
+{% block content %}
+{% include "guides/includes/band_guides.html" %}
+<script type="text/javascript">
+
+	$('#guides').toggleClass('active');
+	$('#sql').toggleClass('active');
+
+</script>
+
+<div class="d-flex">
+	<div class="col-md-2 right_column">
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+	</div>
+	<div class="col-md-10 red">
+
+	</div>
+	{% endblock %}
