@@ -21,5 +21,6 @@ urlpatterns = [
     path('guides/', include('guides.urls')),
     path('', include('main.urls')),
     path('news/', include('news.urls')),
+    path('click/', include('click.urls')),
 
 ]

@@ -68,6 +68,17 @@
 				<img src="1.jpg" id="img" style="display:none;">
 			</pre>
 
+			<p> Таймер считает до 4-х секунд выводя каждые 2 секунды значение: <br>
+				&lt;script type=&quot;text/javascript&quot;&gt;<br/><br/>function func(){<br/>
+					 alert(&#39;Priv&#39;);<br/>}<br/>
+					 var timer = setInterval(func,2000);<br/><br/>function stop(){<br/>	clearInterval(timer);<br/>
+						 alert(&#39;stop&#39;);<br/>}<br/><br/>setTimeout(stop,4000);<br/>&lt;/script&gt;
+
+			</p>
+
+
+
+
 		</div>
 
 	</div>

@@ -53,31 +53,20 @@
 						<td></td>
 						<td></td>
 					</tr>
-
-
-
-
 				</tbody>
-				<pre>
-					1  git clone https://github.com/Gorbachew/blog.git
-	 2  tree blog
-	 3  cd blog
-	 4  virtualenv --python=python3.6 myvenv
-	 5  source myvenv/bin/activate
-	 6  pip instal; django~=1.11.0
-	 7  pip install django~=1.11.0
-	 8  python manage.py migrate
-	 9  cd mysite
-	10  python manage.py migrate
-	11  pip install django~=2.1.2
-	12  python manage.py migrate
-	13  python manage.py createsuperuser
-	14  hystory
-	15  history
-				</pre>
 
 			</table>
-
+		<p>
+			Для того чтобы добавить файлы в github необходимо:<br>
+			git init - указать папку репозитории<br>
+			git add * (если выделить все файлы) или . (если только изменненные новые)<br>
+			git commit -m "v2" - сконвертировать файлы в новую версию<br>
+			git remote add origin https://github.com/Gorbachew/site.git - выбрать репозиторий github<br>
+			git push -m origin master - отправить файлы в github<br>
+			<br>
+			Для того, чтобы получить файлы из репозитории:<br>
+			git clone https://github.com/Gorbachew/site.git - в папке куда установить файлы
+		</p>
 		</div>
 
 	</div>

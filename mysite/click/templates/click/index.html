@@ -1,0 +1,81 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+{% load staticfiles %}
+<table>
+	<tr>
+		<td> <h2>Счет:</h2></td>
+		<td><h2 id="score">0</h2></td>
+	</tr>
+	<tr>
+		<td><h4>Кол-во помошников:</h4></td>
+		<td><h4 id="helpers">0</h4></td>
+	</tr>
+	<tr>
+		<td><h4>Цена:</h4></td>
+		<td><h4 id="pricehelpers">0</h4></td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+
+	powerClick = 1;
+	speedHelpers = 400;
+	pricehelpers = 10;
+
+	$('#pricehelpers').html(pricehelpers);
+
+	function plus() {
+		score = $('#score').html();
+		$('#score').html(parseInt(score) + powerClick);
+	}
+
+
+
+	function helpers() {
+		score = $('#score').html();
+		if (score >= pricehelpers) {
+			$('#score').html(parseInt(score -= pricehelpers));
+			numberH = $('#helpers').html();
+			numberH = $('#helpers').html(parseInt(numberH) + 1);
+			alert("Помошник куплен");
+			pricehelpers = parseInt(pricehelpers * 2);
+			$('#pricehelpers').html(pricehelpers);
+
+
+			imgSourse = $('#helpersImg').html();
+			img = '<img src="{% static "click/helpers.gif" %}" style="width: 100px;">';
+			$('#helpersImg').html(imgSourse + img);
+		}
+		else {
+			alert("Не хватает очков");
+		}
+	}
+
+	function test(){
+	numberH1 = $('#helpers').html();
+	if (numberH1 >= 1){
+		score = $('#score').html();
+		$('#score').html(parseInt(score) + parseInt(numberH1));
+		setInterval(plus,speedHelpers);
+
+	}
+	else {
+		alert('Помошника нет');
+	}
+
+	}
+
+
+
+
+</script>
+
+<button type="button" name="btn" class="btn btn-warning" onclick="plus()">Жмяк</button>
+<button type="button" name="btn2" class="btn btn-info" onclick="helpers(),test()">Купить помошника</button>
+<!-- <button type="button" name="btn3" class="btn btn-info" onclick="test()">Какой счет?</button> -->
+<div id="helpersImg">
+
+</div>
+
+
+{% endblock %}

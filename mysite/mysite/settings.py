@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'main',
     'guides',
     'news',
+    'click',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

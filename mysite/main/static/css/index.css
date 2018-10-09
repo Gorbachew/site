@@ -1,3 +1,22 @@
+/* BAND */
+@media screen and (min-width:991px){
+	#banner{
+		float: left;
+	}
+}
+.ForwardToDuccess{
+	background-color: #68798B;
+	border-radius: 5px;
+	font-weight:bold
+}
+
+#r{color:#F00100; text-shadow: black 0 0 0px;}
+#o{color:#FF8000; text-shadow: black 0 0 0px;}
+#y{color:#FFFF00; text-shadow: black 0 0 0px;}
+#g{color:#00B001; text-shadow: black 0 0 0px;}
+#b{color:#4041FF; text-shadow: black 0 0 0px;}
+#p{color:#A100C1; text-shadow: black 0 0 0px;}
+
 /*INCLUDES*/
 
 
