@@ -17,27 +17,22 @@
 </table>
 
 <script type="text/javascript">
-
 	powerClick = 1;
 	speedHelpers = 400;
 	pricehelpers = 10;
-
 	$('#pricehelpers').html(pricehelpers);
 
 	function plus() {
 		score = $('#score').html();
 		$('#score').html(parseInt(score) + powerClick);
 	}
-
-
-
 	function helpers() {
 		score = $('#score').html();
 		if (score >= pricehelpers) {
 			$('#score').html(parseInt(score -= pricehelpers));
 			numberH = $('#helpers').html();
 			numberH = $('#helpers').html(parseInt(numberH) + 1);
-			alert("Помошник куплен");
+			//alert("Помошник куплен");
 			pricehelpers = parseInt(pricehelpers * 2);
 			$('#pricehelpers').html(pricehelpers);
 

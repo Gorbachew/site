@@ -1,0 +1,58 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+<script type="text/javascript">
+  $('#newses').toggleClass('active');
+</script>
+
+<div id="news">
+  <div id="new">
+    <p id="date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }} Автор: <b>{{ article.author }}</b></p>
+    <p id = "title">{{ article.title }}</p>
+    <hr>
+    <p id="post">{{ article.post|linebreaks }}</p>
+    <hr>
+    {% if  user.username %}
+    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    {% else %}
+    <h5 id = "like">Лайков: {{ article.likes }}</h5>
+    {% endif %}
+    <h5 id="comm">Комментариев: {{article.comm}}</h5>
+  </div>
+  <div class="comments">
+    {% for comment in comments reversed %}
+    <div id="comment">
+      <hr class="m-1">
+      <p id="id_comm">id коментария: {{ comment.id }} Дата: {{ comment.date|date:"d-m-Y в H:i" }} Автор: <b>{{ comment.author }}</b>
+        {% if  user.username %}
+        Лайков: <a href="/news/addlikecomment/{{article.id}}/{{comment.id}}"> {{ comment.likes }}</a>
+        {% else %}
+        Лайков: {{ comment.likes }}
+        {% endif %}
+      </p>
+      <p class="m-1">{{ comment.text|linebreaks }}</p>
+    </div>
+
+    {% empty %}
+    <h5>Комментариев нет</h5>
+    {% endfor %}
+  </div>
+  {% if user.username %}
+  <div id="addcomments">
+    <form action="/news/addcomment/{{article.id}}/" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+        {{ field }}
+        <input type="submit" class="btn btn-info" value="добавить комментарий">
+      </div>
+      {% endfor %}
+    </form>
+  </div>
+  {% else %}
+  <h4 class="bg-danger text-light text-center d-flex justify-content-center"> Войдите или зарегистрируйтесь, чтобы оставлять комментарии</h4>
+  {% endif %}
+
+
+
+</div>
+{% endblock %}

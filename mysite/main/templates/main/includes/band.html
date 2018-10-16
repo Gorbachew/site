@@ -3,20 +3,16 @@
     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 m-0 p-0"></div>
     <div class="container-fluit col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 p-0 m-0 flex-nowrap">
 
-
-      <a class="navbar-brand" id="banner" href="/">GorbacheW</a>
-      <div class="collapse navbar-collapse p-0 m-0" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse p-0 m-0 float-left" id="navbarSupportedContent">
         <ul class="navbar-nav p-0 m-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">На главную<span class="sr-only">(current)</span></a>
-          </li>
+          <a class="navbar-brand" id="banner" href="/">GorbacheW</a>
           <li class="nav-item ">
-            <a class="nav-link" href="/news/" id="news">Новости</a>
+            <a class="nav-link" href="/news/" id="newses">Новости</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/guides/" id="guides">Гайды</a>
           </li>
-          <li class="nav-item dropdown">
+         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Узнать много нового о себе
             </a>
@@ -25,31 +21,32 @@
               <a class="dropdown-item" href="#">Ты лучший!</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Ты красивый!</a>
-            </div>
+            </div>-->
           </li>
           <li class="nav-item">
-
-            <a class="nav-link ForwardToDuccess" href="/click/" id="click">
-
-              <font id="r">В</font><font id="o">пер</font><font id="y">ед</font><font id="g"> к </font><font id="b">успе</font><font id="p">ху</font>
-
-
-
-
-
+            <a class="nav-link bg-secondary" href="/click/" id="click">
+              <font id="r" class="ml-1">В</font><font id="o">пер</font><font id="y">ед</font><font id="g"> к </font><font id="b">успе</font><font id="p">ху</font>
             </a>
           </li>
+          {% if  user.username == "admin"%}
           <li class="nav-item">
             <a class="nav-link text-warning" href="/admin/">Admin</a>
           </li>
+          {% endif %}
         </ul>
+
       </div>
+      {% if user.username %}
+        <a class="navbar-brand text-right" id='login' href="/loginsys/logout/">Выйти ({{ user.username }})</a>
+      {% else %}
+        <a class="navbar-brand text-right" id='login' href="/loginsys/login/">Войти</a>
+      {% endif %}
+
     </div>
     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 m-0 p-0">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
     </div>
 
   </nav>

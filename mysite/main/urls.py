@@ -1,6 +1,7 @@
-from django.urls import path
-
+from django.urls import path, include, re_path
 from . import views
+from django.views.generic import ListView, DetailView
+from news.models import Articles
 
 #from django.views.generic import ListView, DetailView
 #from news.models import News
