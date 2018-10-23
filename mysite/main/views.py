@@ -11,3 +11,6 @@ def index(request):
 
 
     return render(request, 'main/index.html')
+
+def error(request):
+    return render(request, 'main/error.html')

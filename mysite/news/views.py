@@ -3,24 +3,25 @@ from django.template import Context
 from news.models import Articles, Comments,LikesArticles,LikesComments
 from django.db.models import Count,Q
 from django.core.exceptions import ObjectDoesNotExist
-from news.forms import CommentForm
+from news.forms import CommentForm,PostForm
 from django.template.context_processors import csrf
 from django.contrib import auth
 import datetime
+from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your views here.
-#Логика такая, в mysite/urls при указании в адресной строке https://adres/news/ django  переходит в приложение news и его файл urls.
+#Логика такая, в mysite/urls при указании в адресной строке https://adres/ django  переходит в приложение news и его файл urls.
 #Там он видит, что отстуствие какого-либо знака после это переход в функции views/news. Эта функция возвращает файл news.html с настройками вывода всех строк из таблицы Articlesself.
 #После в news.html функция for из таблицы Articles выписывает массив article и уже выводя массив на странице появляется информация
 
-def news(request):
-    args = {}
-    args.update(csrf(request))
-    args['articles'] = Articles.objects.all()[:20]
+def news(request, page_number = 1):
+    number_of_pages = 4
+    args = Articles.objects.all().order_by('-date')
+    current_page = Paginator(args,number_of_pages)
     #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
-    return render(request, 'news/news.html', args)
+    return render(request, 'news/news.html',{'articles': current_page.page(page_number)})
 
 def new(request, new_id):
     comment_form = CommentForm
@@ -44,7 +45,7 @@ def addlike(request, article_id):
             likes.date = timezone.now()
             likes.author = request.user
             likes.save()
-            #Прибавление в таблицу Артиклс +1 к кол-во лайков
+            #Cверяем количество лайков в таблице Статьи и кол-во лайков связанных с этой статьей в таблице ЛайкиСтатей
             article = Articles.objects.get(id = article_id)
             article.likes = LikesArticles.objects.filter(articles_id = article_id).count()
             article.save()
@@ -57,16 +58,17 @@ def addlike(request, article_id):
             response = redirect(return_path)
             return response
     except ObjectDoesNotExist:
-        raise Http404
+        return redirect('loginsys/login/')
 
 def addcomment(request, article_id):
     if request.POST and ("pause" not in request.session):
         form = CommentForm(request.POST)
-        #print(form)
+        #print('\n',form,'\n')
         if form.is_valid():
             #Добавляем массив шаблона "Текст" в таблицу Комментарии
             #print(article)
             comment = form.save(commit=False)
+            #print('\n',comment,'aaaaaaaaaa','\n')
             comment.articles = Articles.objects.get(id = article_id)
             #a = User.get_username(self)
             comment.author = request.user
@@ -79,7 +81,37 @@ def addcomment(request, article_id):
             article.save()
             request.session.set_expiry(60)
             request.session['pause'] = True
-    return redirect('/news/%s'% article_id)
+        else:
+            error = 'У вас невалидная форма сообщения'
+            render(request, 'main/error.html', {'error':error})
+    else:
+        error = 'У вас не отправились данные на сервер'
+        render(request, 'main/error.html', {'error':error})
+    return redirect('/%s'% article_id)
+
+
+def addpost(request):
+    post_form = PostForm
+    args = {}
+    args.update(csrf(request))
+    args['form'] = post_form
+    if request.POST:
+        form = PostForm(request.POST)
+        #print('\n',form,'\n')
+        if form.is_valid():
+            #Добавляем массив шаблона "Пост" в таблицу Статьи
+            post = form.save(commit=False)
+            post.author = request.user
+            post.date = timezone.now()
+            form.save()
+            return redirect('/')
+        else:
+            error = 'У вас невалидная форма поста'
+            render(request, 'main/error.html', {'error':error})
+    else:
+        error = 'У вас не отправились данные на сервер'
+        render(request, 'main/error.html', {'error':error})
+    return render(request,'news/addpost.html',args)
 
 def addlikecomment(request,article_id,comment_id):
     try:
@@ -104,4 +136,4 @@ def addlikecomment(request,article_id,comment_id):
             response = redirect(return_path)
             return response
     except ObjectDoesNotExist:
-        raise Http404
+        return redirect('loginsys/login/')

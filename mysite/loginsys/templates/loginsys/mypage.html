@@ -1,0 +1,92 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+
+
+<div class="mypage d-flex mt-2">
+  {% load staticfiles %}
+  <div id="avatar" class="col-4 col-lg-3 col-xl-3">
+    {% csrf_token %}
+    {% if check == 1 %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
+        {% for avatar in Avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
+            <img id="avatar" src="{{ MEDIA_URL }}{{ avatar.image.url }}" />
+        {% endfor %}
+    {% else %}
+        <img id="avatar" src="{% static "mypage/nophoto.png" %}" />
+    {% endif %}
+
+    {% if user.is_authenticated and login == user.username %}
+    <form action="/loginsys/edit/uploadimage/" method="post" enctype="multipart/form-data">{% csrf_token %}
+      {% if check == 1 %}
+        <label for="id_image" class="profilblock" style="cursor:pointer"><b>Обновить</b></label>
+        <a href="/loginsys/edit/deleteimage"><label class="profilblock" style="cursor:pointer"><b>Удалить</b></label></a>
+      {% else %}
+        <label for="id_image" class="profilblock" style="cursor:pointer"><b>Загрузить аватарку</b></label>
+      {% endif %}
+      {{Addimage}}
+      <input type="submit" name="" value="Отправить файл" id = "addavatarbtn" style="display:none">
+      <script type="text/javascript">
+      $('#id_image').change(
+        function check(){
+          $('#addavatarbtn').trigger('click');
+        });
+      </script>  {# Триггер, отправляет информацию из формы на сервер после выбора фотографии #}
+    </form>
+    <label class="profilblock" id="editbutton" style="cursor:pointer" onclick=""><b>Редактировать</b></label>
+    <label class="profilblock d-none" id="save" style="cursor:pointer" onclick=""><b>Сохранить</b></label>
+    {% endif %}
+  </div>
+  <div id="personalinfo form-group" class="col-7 col-lg-8 col-xl-8 p-0 p-sm-0 p-md-0">
+
+      {% for user in User %}{% for additionaluser in AdditionalUser %}
+      <form id="editpersonalinfo" action="/{{ user.username }}/" method="post">{% csrf_token %}
+        {# СТАТУС #}
+        <h6 id='status' class="personalinfo col-11 p-0">Статус: {{ additionaluser.status }}</h6>
+          <textarea class="personalinfo d-none form-control col-9" name = "editstatus" id='editstatus' placeholder="Статус" rows="1" cols="80">{{ additionaluser.status }}</textarea>
+        {# ИМЯ ФАМИЛИЯ #}
+        <h3 id='fullname' class="personalinfo col-11 p-0 m-0">{{ user.first_name }} {{ user.last_name }}</h3>
+          <input class="personalinfo d-none mt-1 mb-1 form-control col-4 float-left" name = "editfirstname" id='editfirstname' type="text" name="" value="{{ user.first_name }}" placeholder="Имя">
+          <input class="personalinfo d-none mt-1  form-control col-5 float-left" name = "editlastname" id='editlastname' type="text" name="" value="{{ user.last_name }}" placeholder="Фамилия">
+        {# ЛОГИН #}
+        <h5 id='userlogin' class="personalinfo col-11 p-0">{{ user.username }}</h5>
+          <input class="personalinfo d-none mb-1 col-9 form-control" name = "editloginuser" id='editloginuser' type="text" name="" value="{{user.username}}" placeholder="Логин">
+        {# ДАТА РОЖДЕНИЯ #}
+        {% if additionaluser.date_of_birth == None %}
+            <h6 id='date_of_birth' class="personalinfo col-11 p-0">Дата рождения:</h6>
+        {% else %}
+            <h6 id='date_of_birth' class="personalinfo col-11 p-0">Дата рождения:{{ additionaluser.date_of_birth }}</h6>
+        {% endif %}
+          <input class = "personalinfo d-none col-7" data-format="yyyy-mm-dd" name = "editdate_of_birth" id="editdate_of_birth" value="{{additionaluser.date_of_birth|date:"d-m-Y"}}" autocomplete="off"/>
+        {# ЕМАИЛ #}
+        <h6 id='email' class="personalinfo col-11 p-0">Email: {{ user.email }}</h6>
+          <input class="personalinfo d-none mt-1 col-9 form-control" id='editemail' type="email" name="editemail" value="{{user.email}}" placeholder="Email">
+        {# ГОРОД #}
+        <h6 id='city' class="personalinfo col-11 p-0">Город:{{ additionaluser.city }}</h6>
+          <h6><input class="personalinfo d-none mt-1  form-control col-9" name="editcity" id='editcity' type="text" name="" value="{{ additionaluser.city }}" placeholder="Город"></h6>
+        <h6 id='phonenumber' class="personalinfo col-11 p-0">Телефон:{{ additionaluser.phonenumber }}</h6>
+          <input class="personalinfo d-none mt-1  form-control col-9" name="editphonenumber" id='editphonenumber' type="text" name="" value="{{ additionaluser.phonenumber }}" placeholder="Телефон">
+        <h6 id='dateregister' class="personalinfo col-11 p-0">Регистрация: {{ user.date_joined|date:"d.M.Y"  }}</h6>
+        <h6 id='rights' class="personalinfo col-11 p-0">Права: {{ user.is_superuser }}</h6>
+        <h6 id='rating' class="personalinfo col-11 p-0">Рейтинг: {{ additionaluser.rating }}</h6>
+        {# При нажатии на кнопку редактирование появляются редактируемые блоки с данными пользователя input: #}
+          <input class="d-none" id='addpersonalinfo' type="submit" formmethod="post">
+          <script type="text/javascript">
+          $('#editbutton').click(function editpersonalinfo(){
+            $('#fullname,#userlogin,#email,#editbutton,#status,#city,#phonenumber,#date_of_birth').hide();
+            $('#editstatus,#editfirstname,#editlastname,#editemail,#editcity,#editphonenumber,#editloginuser,#save,#editdate_of_birth').removeClass('d-none');
+            $('#editdate_of_birth').datepicker({
+                  uiLibrary: 'bootstrap4',
+              });
+          });
+          $('#save').click(
+            function(){
+              $('#addpersonalinfo').trigger('click');
+            });
+
+          </script>
+        </form>
+        {{AdditionalUsersForm}}
+        {% endfor %}{% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -8,5 +8,6 @@ from news.models import Articles
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('error/', views.error, name='error'),
     #path('',ListView.as_view(queryset=News.object.all().order_by("-date")[:20],)),
 ]

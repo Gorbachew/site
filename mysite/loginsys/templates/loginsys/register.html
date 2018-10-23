@@ -1,0 +1,25 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+<div class="form-group d-flex justify-content-center">
+  <form class="" action="/loginsys/register/" method="post">
+    {% csrf_token %}
+    <h3>Регистрация</h3>
+    {{form}}
+    <input type="submit" name="btn" class="btn btn-primary mt-1" value="Зарегистрироваться">
+    {% if error %}
+    <br>
+    <label class="bg-danger text-light mt-2"> {{ error }}  </label>
+    {% endif %}
+  </form>
+</div>
+{% if error %}
+<div class="m-5">
+  <p> <b>Логин:</b> <br> {{ helplogin }}  </p>
+  <p> <b>Пароль:</b> <br> {{ helppassword|linebreaks }}  </p>
+</div>
+{% endif %}
+
+
+
+
+{% endblock %}

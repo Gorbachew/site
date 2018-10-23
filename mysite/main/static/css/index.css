@@ -9,9 +9,15 @@ p{
 
 }
 #login{
-	float: right;
+	float:right;
+}
+#mypage{
+	float:right;
 }
 #login:hover{
+	color: red;
+}
+#mypage:hover{
 	color: red;
 }
 #r{color:#F00100; text-shadow: black 0 0 0px;}
@@ -30,6 +36,11 @@ p{
 	min-height: 800px;
 	overflow: hidden;
 }
+@media screen and (max-width:600px){
+	.mainblock{
+		min-height: 400px;
+	}
+	}
 
 /*GUIDES */
 .right_column{
@@ -114,3 +125,19 @@ p{
 	font-size: 10pt;
 	margin: 0px 0px 0px 5px;
 }
+/* ADDPOST */
+
+#titleAddpost{
+	width: 200px;
+}
+/* MYPAGE */
+#avatar{
+max-width: 200px;
+max-height: 500px;
+}
+@media screen and (max-width:600px){
+	#avatar{
+	max-width: 150px;
+	max-height: 300px;
+	}
+	}

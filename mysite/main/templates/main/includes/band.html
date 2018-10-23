@@ -5,9 +5,9 @@
 
       <div class="collapse navbar-collapse p-0 m-0 float-left" id="navbarSupportedContent">
         <ul class="navbar-nav p-0 m-0">
-          <a class="navbar-brand" id="banner" href="/">GorbacheW</a>
+          <a class="navbar-brand" id="banner" href="/main/">GorbacheW</a>
           <li class="nav-item ">
-            <a class="nav-link" href="/news/" id="newses">Новости</a>
+            <a class="nav-link" href="/" id="newses">Новости</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/guides/" id="guides">Гайды</a>
@@ -28,17 +28,19 @@
               <font id="r" class="ml-1">В</font><font id="o">пер</font><font id="y">ед</font><font id="g"> к </font><font id="b">успе</font><font id="p">ху</font>
             </a>
           </li>
-          {% if  user.username == "admin"%}
+          {% if  user.is_superuser %}
           <li class="nav-item">
-            <a class="nav-link text-warning" href="/admin/">Admin</a>
+            <a class="nav-link text-warning" href="/adminpanel/">Admin</a>
           </li>
           {% endif %}
         </ul>
 
       </div>
-      {% if user.username %}
-        <a class="navbar-brand text-right" id='login' href="/loginsys/logout/">Выйти ({{ user.username }})</a>
+      {% if user.is_authenticated %}
+        <a class="navbar-brand text-right ml-1" id='mypage' href="/{{ user.username }}/">({{ user.username }})</a>
+        <a class="navbar-brand text-right mr-0" id='login' href="/loginsys/logout/">Выйти</a>
       {% else %}
+        <a class="navbar-brand text-right" id='login' href="/loginsys/register/">Регистрация</a>
         <a class="navbar-brand text-right" id='login' href="/loginsys/login/">Войти</a>
       {% endif %}
 

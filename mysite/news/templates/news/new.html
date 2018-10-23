@@ -6,13 +6,14 @@
 
 <div id="news">
   <div id="new">
-    <p id="date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }} Автор: <b>{{ article.author }}</b></p>
+
+    <p id="date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }} Автор: <b><a href="/{{ article.author }}/">{{ article.author }}</a></b></p>
     <p id = "title">{{ article.title }}</p>
     <hr>
     <p id="post">{{ article.post|linebreaks }}</p>
     <hr>
     {% if  user.username %}
-    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    <h5 id = "like">Лайков: <a href="/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
     {% else %}
     <h5 id = "like">Лайков: {{ article.likes }}</h5>
     {% endif %}
@@ -24,7 +25,7 @@
       <hr class="m-1">
       <p id="id_comm">id коментария: {{ comment.id }} Дата: {{ comment.date|date:"d-m-Y в H:i" }} Автор: <b>{{ comment.author }}</b>
         {% if  user.username %}
-        Лайков: <a href="/news/addlikecomment/{{article.id}}/{{comment.id}}"> {{ comment.likes }}</a>
+        Лайков: <a href="/addlikecomment/{{article.id}}/{{comment.id}}"> {{ comment.likes }}</a>
         {% else %}
         Лайков: {{ comment.likes }}
         {% endif %}
@@ -38,13 +39,11 @@
   </div>
   {% if user.username %}
   <div id="addcomments">
-    <form action="/news/addcomment/{{article.id}}/" method="post">
+    <form action="/addcomment/{{article.id}}/" method="post">
       {% csrf_token %}
       {% for field in form %}
-      <div class="form-group">
         {{ field }}
         <input type="submit" class="btn btn-info" value="добавить комментарий">
-      </div>
       {% endfor %}
     </form>
   </div>

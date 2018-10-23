@@ -7,5 +7,7 @@ urlpatterns = [
     #path('',ListView.as_view(queryset=Articles.objects.all().order_by("-date")[:20], template_name='news/posts.html')),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
-
+    path('register/', views.register, name='register'),
+    path('edit/uploadimage/', views.uploadimage, name='uploadimage'),
+    path('edit/deleteimage/', views.deleteimage, name='deleteimage'),
 ]

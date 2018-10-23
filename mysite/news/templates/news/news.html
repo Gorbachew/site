@@ -1,29 +1,66 @@
 {% extends "main/maintemplate.html" %}
 
 {% block content %}
+{# Скрипт делает активной кнопку страницы в панели сверху #}
 <script type="text/javascript">
-
 $('#newses').toggleClass('active');
-
 </script>
+{# Вывод информации на страницу #}
 <div class="container-fluit" id = "news">
-{% for article in articles reversed %}
+{% for article in articles %}
 
   <div class="news">
-    <p id = "date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }}  Автор: <b>{{ article.author }}</b></p>
-    <a href="{{ article.id }}" id = "title"><p>{{ article.title|linebreaks  }}</p></a>
+    <p id = "date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }}  Автор: <b><a href="/{{ article.author }}/">{{ article.author }}</a></b></p>
+    <a href="/{{ article.id }}/" id = "title"><p>{{ article.title|linebreaks  }}</p></a>
     <p id = "post">{{ article.post|linebreaks|truncatechars:255  }}</p>
     <hr>
     {% if  user.username %}
-    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    <h5 id = "like">Лайков: <a href="/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
     {% else %}
     <h5 id = "like">Лайков: {{ article.likes }}</h5>
     {% endif %}
-    <a href="{{ article.id }}"><h5 class="m-0" id = "comm">{{ article.comm }} комментариев</h5></a>
+    <a href="/{{ article.id }}/"><h5 class="m-0" id = "comm">{{ article.comm }} комментариев</h5></a>
   </div>
 
 {% empty %}
     <h3>Список пуст</h3>
 {% endfor %}
+{# Кнопка добавления поста #}
+{% if user.username %}
+  <a href="/addpost/"><input class = "btn btn-secondary float-left" type="submit" name="addpost" value="Добавить пост"></a>
+{% else %}
+  <a href="loginsys/login/"><input class = "btn btn-secondary float-left" type="submit" name="addpost" value="Добавить пост"></a>
+  <label class="text-light bg-danger float-left">Чтобы добавить пост, авторизируйтесь</label>
+{% endif %}
+{# Paginator #}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if articles.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="/page/{{articles.previous_page_number}}/" tabindex="-1">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    {% endif %}
+    {% for page in articles.paginator.page_range %}
+      {% if page == articles.number %}
+        <li class="page-item"><a class="page-link bg-primary text-light" href="/page/{{page}}/">{{page}}</a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="/page/{{page}}/">{{page}}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if articles.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="/page/{{articles.next_page_number}}/">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
 </div>
 {% endblock %}

@@ -1,24 +1,14 @@
 {% extends "main/maintemplate.html" %}
 {% block content %}
-<h2 class="text-center mt-3">Добро пожаловать!</h2>
+<div class="form-group d-flex justify-content-center">
   <form class="" action="/loginsys/login/" method="post">
     {% csrf_token %}
-    <div class="m-5">
-    <div class="form-group">
-    <label for="username">Имя пользователя:</label>
-    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Имя пользователя">
-    </div>
-    <div class="form-group">
-    <label for="password">Пароль:</label>
-    <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Пароль">
-    </div>
-
-
+    <h3>Добро пожаловать</h3>
+    {{ form }}
     <input class="btn btn-primary" type="submit" name="btn" value="Войти">
     {% if login_error %}
         <label class="bg-danger text-light"> {{ login_error }}  </label>
     {% endif %}
-    </div>
   </form>
 </div>
 

@@ -1,0 +1,161 @@
+p{
+	word-wrap: break-word;
+}
+a{
+	color:black;
+}
+/* BAND */
+@media screen and (min-width:991px){
+	#banner{
+		float: left;
+	}
+
+}
+#login{
+	float:right;
+}
+#mypage{
+	float:right;
+}
+#login:hover{
+	color: red;
+}
+#mypage:hover{
+	color: red;
+}
+#r{color:#F00100; text-shadow: black 0 0 0px;}
+#o{color:#FF8000; text-shadow: black 0 0 0px;}
+#y{color:#FFFF00; text-shadow: black 0 0 0px;}
+#g{color:#00B001; text-shadow: black 0 0 0px;}
+#b{color:#4041FF; text-shadow: black 0 0 0px;}
+#p{color:#A100C1; text-shadow: black 0 0 0px;}
+
+/*INCLUDES*/
+
+
+/*MAIN*/
+.mainblock{
+	background-color: #FFFFFF;
+	min-height: 800px;
+	overflow: hidden;
+}
+@media screen and (max-width:600px){
+	.mainblock{
+		min-height: 400px;
+	}
+	}
+
+/*GUIDES */
+.right_column{
+	overflow: hidden;
+	border: solid 6px;
+	border-color:  #EDEDED;
+	margin:5px 5px;
+	background: #F9F9F9;
+	min-height: 100%;
+}
+.bookmarks{
+	background: #FFF600;
+	opacity: .9;
+	border: 1px solid #B2FFFE;
+}
+
+/* NEWS */
+#news{
+	background: #DEDEDE;
+	overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+}
+.news{
+	padding: 5px 10px 10px 10px;
+	box-shadow: 0px 0px 5px 0px #64727A;
+	min-height: 180px;
+	width: 100%;
+	margin: 0px 0px 7px 5px;
+	background: white;
+	overflow: hidden;
+}
+#new{
+	padding: 5px 15px 10px 10px;
+	background: white;
+	overflow-x: hidden;
+	min-height: 170px;
+	width: 100%;
+}
+.comments{
+	padding: 5px 10px 10px 10px;
+	background: #DEDEDE;
+	width: 100%;
+	max-height: 380px;
+	overflow: auto;
+
+}
+#comment{
+	background: white;
+	min-height: 60px;
+	padding-left: 5px;
+	box-shadow: 0px 0px 5px 0px #64727A;
+}
+#addcomments{
+	margin: 5px 10px 10px 10px;
+	width: 50%;
+	height: 100px;
+}
+#date{
+	font-size: 10pt;
+	background-color:#D2EFFF;
+	padding-left: 5px
+}
+#title{
+	color: black;
+	font-size: 15pt;
+	font-weight:bold
+}
+#post{
+	font-size: 13pt;
+}
+#like{
+	float: left;
+	font-size: 13pt;
+}
+#comm{
+	color: black;
+	float: right;
+	font-size: 13pt;
+}
+#id_comm{
+	font-size: 10pt;
+	margin: 0px 0px 0px 5px;
+}
+/* ADDPOST */
+
+#titleAddpost{
+	width: 200px;
+}
+/* MYPAGE */
+#avatar{
+max-width: 100%;
+}
+.profilblock{
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+	border: 1px solid;
+	border-radius: 5px;
+}
+.personalinfo{
+	font-size: 16pt;
+}
+@media screen and (max-width:600px){
+	#avatar{
+	max-width: 100%;
+	}
+	.profilblock{
+		width: 150px;
+		font-size: 10pt;
+	}
+	.personalinfo{
+		font-size: 12pt;
+	}
+	}
