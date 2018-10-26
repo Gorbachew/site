@@ -25,6 +25,6 @@ urlpatterns = [
     path('main/', include('main.urls')),
     path('click/', include('click.urls')),
     path('loginsys/', include('loginsys.urls')),
-    re_path(r'^(?P<login>\w+)/$', views.mypage, name='mypage'),
     path('', include('news.urls')),
+    re_path(r'^(?P<login>\w+)/$', views.mypage, name='mypage'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

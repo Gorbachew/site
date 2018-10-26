@@ -11,12 +11,16 @@ a{
 	}
 
 }
-#login{
-	float:right;
+.bandavatar{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	overflow: hidden;
 }
-#mypage{
-	float:right;
+#bandavatar{
+	width: 100%;
 }
+
 #login:hover{
 	color: red;
 }
@@ -90,6 +94,16 @@ a{
 	max-height: 380px;
 	overflow: auto;
 
+}
+.commavatar{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+
+}
+#commavatar{
+	width: 100%;
 }
 #comment{
 	background: white;

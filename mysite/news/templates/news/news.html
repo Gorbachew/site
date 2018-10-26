@@ -11,23 +11,23 @@ $('#newses').toggleClass('active');
 
   <div class="news">
     <p id = "date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }}  Автор: <b><a href="/{{ article.author }}/">{{ article.author }}</a></b></p>
-    <a href="/{{ article.id }}/" id = "title"><p>{{ article.title|linebreaks  }}</p></a>
+    <a href="/news/{{ article.id }}/" id = "title"><p>{{ article.title|linebreaks  }}</p></a>
     <p id = "post">{{ article.post|linebreaks|truncatechars:255  }}</p>
     <hr>
     {% if  user.username %}
-    <h5 id = "like">Лайков: <a href="/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
     {% else %}
     <h5 id = "like">Лайков: {{ article.likes }}</h5>
     {% endif %}
-    <a href="/{{ article.id }}/"><h5 class="m-0" id = "comm">{{ article.comm }} комментариев</h5></a>
+    <a href="/news/{{ article.id }}/"><h5 class="m-0" id = "comm">{{ article.comm }} комментариев</h5></a>
   </div>
 
 {% empty %}
     <h3>Список пуст</h3>
 {% endfor %}
 {# Кнопка добавления поста #}
-{% if user.username %}
-  <a href="/addpost/"><input class = "btn btn-secondary float-left" type="submit" name="addpost" value="Добавить пост"></a>
+{% if user.is_authenticated %}
+  <a href="/news/addpost/"><input class = "btn btn-secondary float-left" type="submit" name="addpost" value="Добавить пост"></a>
 {% else %}
   <a href="loginsys/login/"><input class = "btn btn-secondary float-left" type="submit" name="addpost" value="Добавить пост"></a>
   <label class="text-light bg-danger float-left">Чтобы добавить пост, авторизируйтесь</label>

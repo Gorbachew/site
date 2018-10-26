@@ -37,11 +37,21 @@
 
       </div>
       {% if user.is_authenticated %}
-        <a class="navbar-brand text-right ml-1" id='mypage' href="/{{ user.username }}/">({{ user.username }})</a>
-        <a class="navbar-brand text-right mr-0" id='login' href="/loginsys/logout/">Выйти</a>
+      <div class="bandavatar float-right ml-1">
+        {% if check == 1 %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
+            {% for avatar in Avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
+              <a href="/{{ user.username }}/">  <img id="bandavatar" src="{{ MEDIA_URL }}{{ avatar.image.url }}" /></a>
+            {% endfor %}
+        {% else %}
+              {% load staticfiles %}
+              <a href="/{{ user.username }}/"> <img id="bandavatar" src="{% static "mypage/nophoto.png" %}" /></a>
+        {% endif %}
+      </div>
+        <a class="navbar-brand text-right ml-1 mr-0 float-right" id='mypage' href="/{{ user.username }}/">{{ user.username }}</a>
+        <a class="navbar-brand text-right mr-0 float-right" id='login' href="/loginsys/logout/">Выйти</a>
       {% else %}
-        <a class="navbar-brand text-right" id='login' href="/loginsys/register/">Регистрация</a>
-        <a class="navbar-brand text-right" id='login' href="/loginsys/login/">Войти</a>
+        <a class="navbar-brand text-right float-right" id='login' href="/loginsys/register/">Регистрация</a>
+        <a class="navbar-brand text-right float-right" id='login' href="/loginsys/login/">Войти</a>
       {% endif %}
 
     </div>

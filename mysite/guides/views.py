@@ -1,30 +1,87 @@
 from django.shortcuts import render
-
+from main.views import avatar
 # Create your views here.
 
 def index(request):
-    return render(request, 'guides/index.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/index.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/index.html',args)
+
 
 def bootstrap(request):
-    return render(request, 'guides/bootstrap.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/bootstrap.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/bootstrap.html',args)
 
 def django(request):
-    return render(request, 'guides/django.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/django.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/django.html',args)
 
 def jquery(request):
-    return render(request, 'guides/jquery.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/jquery.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/jquery.html',args)
+
 
 def js(request):
-    return render(request, 'guides/javascript.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/javascript.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/javascript.html',args)
+
 
 def css(request):
-    return render(request, 'guides/css.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/css.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/css.html',args)
 
 def html(request):
-    return render(request, 'guides/html.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/html.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/html.html',args)
 
 def sql(request):
-    return render(request, 'guides/sql.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/sql.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/sql.html',args)
 
 def git(request):
-    return render(request, 'guides/git.html')
+    args={}
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'guides/git.html',args)
+    except ObjectDoesNotExist:
+        return render(request, 'guides/git.html',args)

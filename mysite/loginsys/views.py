@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from loginsys.forms import RegisterForm,LoginForm,ImageForm
 from .models import UsersImages,AdditionalUsers
 from django.utils import timezone
+from main.views import avatar
 
 def login(request):
     args = {}
@@ -40,7 +41,6 @@ def register(request):
         newuser_form = RegisterForm(request.POST)
         if newuser_form.is_valid():
             newuser_form.save()
-            print(newuser_form.cleaned_data['username'])
             user = User.objects.get(username = newuser_form.cleaned_data['username']) #Находит id юзера по нику
             additionalusers = AdditionalUsers(
               user = user
@@ -60,15 +60,14 @@ def register(request):
 def mypage(request, login):
     args = {}
     args.update(csrf(request))
-    user_id = User.objects.values('id').get(username = login) #Находит id юзера по нику
+    user_id = request.user.id #Находит id юзера по нику
     args['User'] = User.objects.filter(username = login)
-    args['AdditionalUser'] = AdditionalUsers.objects.filter(user_id = user_id['id'])
-    args['Avatar'] = UsersImages.objects.filter(user_id = user_id['id'],avatar = 'True') #Находит в таблице Изображений пользователей картинки присвоенные ид этого пользователя
+    args['AdditionalUser'] = AdditionalUsers.objects.filter(user_id = user_id)
     args['Addimage'] = ImageForm() #Добавляет невидимую форму для загрузки файла, а то чуть не удалил один раз
-    if args['Avatar']:
-        args['check'] = 1
-    else:
-        args['check'] = 0
+
+    args['Avatar'] = avatar(request,str(user_id))['Avatar']
+    args['check'] = avatar(request,str(user_id))['check']
+
     args['login'] = login
     if request.method == 'POST':
         edit = {}

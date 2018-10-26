@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.template import Context
 from news.models import Articles, Comments,LikesArticles,LikesComments
+from loginsys.models import UsersImages
 from django.db.models import Count,Q
 from django.core.exceptions import ObjectDoesNotExist
 from news.forms import CommentForm,PostForm
@@ -10,7 +11,7 @@ import datetime
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from main.views import avatar
 # Create your views here.
 #Логика такая, в mysite/urls при указании в адресной строке https://adres/ django  переходит в приложение news и его файл urls.
 #Там он видит, что отстуствие какого-либо знака после это переход в функции views/news. Эта функция возвращает файл news.html с настройками вывода всех строк из таблицы Articlesself.
@@ -20,8 +21,14 @@ def news(request, page_number = 1):
     number_of_pages = 4
     args = Articles.objects.all().order_by('-date')
     current_page = Paginator(args,number_of_pages)
-    #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
-    return render(request, 'news/news.html',{'articles': current_page.page(page_number)})
+    try:
+        Avatar = avatar(request,request.user.id)['Avatar']
+        check = avatar(request,request.user.id)['check']
+        #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
+        return render(request, 'news/news.html',{'articles': current_page.page(page_number),'Avatar':Avatar,'check':check})
+    except:
+        #args['username'] = auth.get_user(request).username такая-же история как с news()
+        return redirect('/loginsys/login/')
 
 def new(request, new_id):
     comment_form = CommentForm
@@ -30,8 +37,19 @@ def new(request, new_id):
     args['article'] = Articles.objects.get(id = new_id)
     args['comments'] = Comments.objects.filter(articles_id = new_id)
     args['form'] = comment_form
-    #args['username'] = auth.get_user(request).username такая-же история как с news()
-    return render(request, 'news/new.html', args)
+    user_id = Comments.objects.values('author_id').filter(articles_id = new_id).distinct()
+    idusersforavatar = []
+    for split in user_id:
+        idusersforavatar.append( split['author_id'])
+    args['avatar'] = UsersImages.objects.filter(user_id__in = idusersforavatar,avatar = 'True')
+    print(args['avatar'])
+    try:
+        args['Avatar'] = avatar(request,request.user.id)['Avatar']
+        args['check'] = avatar(request,request.user.id)['check']
+        return render(request, 'news/new.html',args)
+    except:
+        #args['username'] = auth.get_user(request).username такая-же история как с news()
+        return redirect('/loginsys/login/')
 
 
 def addlike(request, article_id):
@@ -61,7 +79,8 @@ def addlike(request, article_id):
         return redirect('loginsys/login/')
 
 def addcomment(request, article_id):
-    if request.POST and ("pause" not in request.session):
+    return_path  = request.META.get('HTTP_REFERER','/')#Возврат на предыдущую страницу
+    if request.POST:
         form = CommentForm(request.POST)
         #print('\n',form,'\n')
         if form.is_valid():
@@ -73,21 +92,20 @@ def addcomment(request, article_id):
             #a = User.get_username(self)
             comment.author = request.user
             comment.date = timezone.now()
+
             form.save()
             #Увеличиваем кол-во сообщений в таблице Статьи.
             article = Articles.objects.get(id = article_id)
             comment = Comments.objects.filter(articles_id = article_id).count()
             article.comm = comment
             article.save()
-            request.session.set_expiry(60)
-            request.session['pause'] = True
         else:
             error = 'У вас невалидная форма сообщения'
             render(request, 'main/error.html', {'error':error})
     else:
         error = 'У вас не отправились данные на сервер'
         render(request, 'main/error.html', {'error':error})
-    return redirect('/%s'% article_id)
+    return redirect(return_path)
 
 
 def addpost(request):
@@ -137,3 +155,20 @@ def addlikecomment(request,article_id,comment_id):
             return response
     except ObjectDoesNotExist:
         return redirect('loginsys/login/')
+
+def deletenews(request, article_id):
+
+    deletepost = Articles.objects.get(id = article_id)
+    deletepost.delete()
+    return redirect('/')
+
+def deletecomment(request,article_id,comment_id):
+    return_path  = request.META.get('HTTP_REFERER','/')#Возврат на предыдущую страницу
+    deletecomment = Comments.objects.get(id = comment_id)
+    deletecomment.delete()
+    #Добавляем кол-во сообщений в таблице Статьи.
+    article = Articles.objects.get(id = article_id)
+    comment = Comments.objects.filter(articles_id = article_id).count()
+    article.comm = comment
+    article.save()
+    return redirect(return_path)

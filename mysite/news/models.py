@@ -21,7 +21,7 @@ class Comments(models.Model):
     class Meta():
         db_table = 'Comments'
     text = models.TextField(verbose_name="")
-    author =  models.ForeignKey(User,on_delete=models.CASCADE,)
+    author = models.ForeignKey(User,on_delete=models.CASCADE,)
     date = models.DateTimeField()
     likes = models.IntegerField(default=0)
     articles = models.ForeignKey(Articles,on_delete=models.CASCADE,)
