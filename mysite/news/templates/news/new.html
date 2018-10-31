@@ -26,19 +26,22 @@
   <div class="comments">
     {% for comment in comments reversed %}
     <div id="comment">
-      <div class="commavatar mr-1 mt-1 float-left">
-
-            {% for avatarcomments in avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
-              {% if comment.author_id == avatarcomments.user_id %}
-              <a href="/{{ user.username }}/">  <img id="commavatar" src="{{ MEDIA_URL }}{{ avatarcomments.image.url }}" /></a>
-              {% endif %}
+      <div class="divcommavatar mr-1 mt-1 float-left">
+            {% for avatar in avatarscomments %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
+              {% if comment.author_id == avatar.user_id and avatar.avatar == True %}
+                <a href="/{{ comment.author }}/">  <img class="commavatar" id = 'commentavatar'  src="{{ MEDIA_URL }}{{ avatar.image.url }}" /></a>
+              {% endif %}  
             {% endfor %}
             {% load staticfiles %}
-            <a href="/{{ user.username }}/"> <img id="bandavatar" src="{% static "mypage/nophoto.png" %}" /></a>
-
+            <a href="/{{ comment.author }}/"> <img class="commavatar d-none" id = 'commentnophoto' src="{% static "mypage/nophoto.png" %}" /></a>
+            <script type="text/javascript">
+              if (!$('img').is('#commentavatar')){
+                $('#commentnophoto').removeClass('d-none')
+              }
+            </script>
       </div>
       <div class="content">
-        <p id="id_comm" class="bg-light">Автор: <a href="/{{ comment.author }}/"><b>{{ comment.author }}</b></a> id коментария: {{ comment.id }} Дата: {{ comment.date|date:"d-m-Y в H:i" }}
+        <p id="id_comm" class="bg-light">Автор: <a href="/{{ comment.author }}/"><b>{{ comment.author }}</b></a> id: {{ comment.id }} Дата: {{ comment.date|date:"d-m-Y в H:i" }}
           {% if  user.is_authenticated %}
           Лайков: <a href="/news/addlikecomment/{{article.id}}/{{comment.id}}"> {{ comment.likes }}</a>
           {% else %}

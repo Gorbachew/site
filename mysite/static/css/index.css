@@ -11,13 +11,13 @@ a{
 	}
 
 }
-.bandavatar{
+.divbandavatar{
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
 	overflow: hidden;
 }
-#bandavatar{
+.bandavatar{
 	width: 100%;
 }
 
@@ -95,14 +95,21 @@ a{
 	overflow: auto;
 
 }
-.commavatar{
+.divcommavatar{
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	overflow: hidden;
-
 }
-#commavatar{
+@media screen and (max-width:600px){
+	.divcommavatar{
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	}
+.commavatar{
 	width: 100%;
 }
 #comment{
@@ -148,10 +155,11 @@ a{
 	width: 200px;
 }
 /* MYPAGE */
-#avatar{
+.avatar{
 max-width: 100%;
 }
 .profilblock{
+	overflow: hidden;
 	width: 100%;
 	text-align: center;
 	padding: 5px;
@@ -162,10 +170,11 @@ max-width: 100%;
 	font-size: 16pt;
 }
 @media screen and (max-width:600px){
-	#avatar{
+	.avatar{
 	max-width: 100%;
 	}
 	.profilblock{
+		overflow: hidden;
 		width: 150px;
 		font-size: 10pt;
 	}

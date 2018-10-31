@@ -37,15 +37,19 @@
 
       </div>
       {% if user.is_authenticated %}
-      <div class="bandavatar float-right ml-1">
-        {% if check == 1 %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
-            {% for avatar in Avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
-              <a href="/{{ user.username }}/">  <img id="bandavatar" src="{{ MEDIA_URL }}{{ avatar.image.url }}" /></a>
+      <div class="divbandavatar float-right ml-1">
+            {% for avatar in BandAvatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
+              {% if avatar.avatar == True %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
+                <a href="/{{ user.username }}/"> <img class="bandavatar" id = 'bandavatar'src="{{ MEDIA_URL }}{{ avatar.image.url }}" /></a>
+              {% endif %}
             {% endfor %}
-        {% else %}
-              {% load staticfiles %}
-              <a href="/{{ user.username }}/"> <img id="bandavatar" src="{% static "mypage/nophoto.png" %}" /></a>
-        {% endif %}
+            {% load staticfiles %}
+            <a href="/{{ user.username }}/"> <img class="bandavatar d-none" id = 'bandnophoto' src="{% static "mypage/nophoto.png" %}" /></a>
+            <script type="text/javascript">
+              if (!$('img').is('#bandavatar')){
+                $('#bandnophoto').removeClass('d-none')
+              }
+            </script>
       </div>
         <a class="navbar-brand text-right ml-1 mr-0 float-right" id='mypage' href="/{{ user.username }}/">{{ user.username }}</a>
         <a class="navbar-brand text-right mr-0 float-right" id='login' href="/loginsys/logout/">Выйти</a>

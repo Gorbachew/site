@@ -13,19 +13,16 @@ def avatar(request,user_id):
     Avatar = {}
     try:
         Avatar['Avatar'] = UsersImages.objects.filter(user_id = str(user_id),avatar = 'True')
+        Avatar['BandAvatar'] = UsersImages.objects.filter(user_id = request.user,avatar = 'True')
     except:
         Avatar['Avatar'] = {}
-    if Avatar['Avatar']:
-        Avatar['check'] = 1
-    else:
-        Avatar['check'] = 0
+        Avatar['BandAvatar'] = {}
     return Avatar
 
 def index(request):
     args = {}
     try:
-        args['Avatar'] = avatar(request,request.user.id)['Avatar']
-        args['check'] = avatar(request,request.user.id)['check']
+        args['BandAvatar'] = avatar(request,request.user.id)['BandAvatar']
         return render(request, 'main/index.html',args)
     except ObjectDoesNotExist:
         return render(request, 'main/index.html')
@@ -33,8 +30,7 @@ def index(request):
 def error(request):
     args = {}
     try:
-        args['Avatar'] = avatar(request,request.user)['Avatar']
-        args['check'] = avatar(request,request.user)['check']
+        args['BandAvatar'] = avatar(request,request.user)['BandAvatar']
         return render(request, 'main/error.html',args)
     except:
         return render(request, 'main/error.html')

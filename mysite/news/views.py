@@ -22,10 +22,9 @@ def news(request, page_number = 1):
     args = Articles.objects.all().order_by('-date')
     current_page = Paginator(args,number_of_pages)
     try:
-        Avatar = avatar(request,request.user.id)['Avatar']
-        check = avatar(request,request.user.id)['check']
+        BandAvatar = avatar(request,request.user.id)['BandAvatar']
         #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
-        return render(request, 'news/news.html',{'articles': current_page.page(page_number),'Avatar':Avatar,'check':check})
+        return render(request, 'news/news.html',{'articles': current_page.page(page_number),'BandAvatar':BandAvatar})
     except:
         #args['username'] = auth.get_user(request).username такая-же история как с news()
         return redirect('/loginsys/login/')
@@ -38,17 +37,18 @@ def new(request, new_id):
     args['comments'] = Comments.objects.filter(articles_id = new_id)
     args['form'] = comment_form
     user_id = Comments.objects.values('author_id').filter(articles_id = new_id).distinct()
+    print(user_id)
     idusersforavatar = []
-    for split in user_id:
+    for split in user_id: #Этим for читаем queryset user_id и добавляем в список idusersforavatar ид всех юзеров которые оставили комментарии по ним ищем аватарки
         idusersforavatar.append( split['author_id'])
-    args['avatar'] = UsersImages.objects.filter(user_id__in = idusersforavatar,avatar = 'True')
-    print(args['avatar'])
+    args['avatarscomments'] = UsersImages.objects.filter(user_id__in = idusersforavatar,avatar = 'True')
     try:
         args['Avatar'] = avatar(request,request.user.id)['Avatar']
-        args['check'] = avatar(request,request.user.id)['check']
+
+        args['BandAvatar'] = Avatar = avatar(request,request.user.id)['BandAvatar']
         return render(request, 'news/new.html',args)
     except:
-        #args['username'] = auth.get_user(request).username такая-же история как с news()
+
         return redirect('/loginsys/login/')
 
 

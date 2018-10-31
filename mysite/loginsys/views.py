@@ -60,13 +60,13 @@ def register(request):
 def mypage(request, login):
     args = {}
     args.update(csrf(request))
-    user_id = request.user.id #Находит id юзера по нику
+    user_id = str(User.objects.values('id').get(username = login)['id']) #Находит id юзера по нику
     args['User'] = User.objects.filter(username = login)
     args['AdditionalUser'] = AdditionalUsers.objects.filter(user_id = user_id)
     args['Addimage'] = ImageForm() #Добавляет невидимую форму для загрузки файла, а то чуть не удалил один раз
 
     args['Avatar'] = avatar(request,str(user_id))['Avatar']
-    args['check'] = avatar(request,str(user_id))['check']
+    args['BandAvatar'] = avatar(request,str(user_id))['BandAvatar']
 
     args['login'] = login
     if request.method == 'POST':
@@ -79,8 +79,8 @@ def mypage(request, login):
         edit['editemail'] = request.POST.get('editemail')
         edit['editcity'] = request.POST.get('editcity')
         edit['editphonenumber'] = request.POST.get('editphonenumber')
-        edituser = User.objects.get(id = str(user_id['id']))
-        editadditionaluser = AdditionalUsers.objects.get(user_id = str(user_id['id']))
+        edituser = User.objects.get(id = str(user_id))
+        editadditionaluser = AdditionalUsers.objects.get(user_id = str(user_id))
 
         edituser.first_name = edit['editfirstname']
         edituser.last_name = edit['editlastname']

@@ -6,21 +6,25 @@
   {% load staticfiles %}
   <div id="avatar" class="col-4 col-lg-3 col-xl-3">
     {% csrf_token %}
-    {% if check == 1 %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
-        {% for avatar in Avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
-            <img id="avatar" src="{{ MEDIA_URL }}{{ avatar.image.url }}" />
-        {% endfor %}
-    {% else %}
-        <img id="avatar" src="{% static "mypage/nophoto.png" %}" />
-    {% endif %}
 
+    {% for avatar in Avatar %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
+        {% if avatar.avatar == True %}  {# Если фото с тегом аватар тру в базе то перменной присваивается значение 1  #}
+          <img class = "avatar" id = 'avatar' src="{{ MEDIA_URL }}{{ avatar.image.url }}" />
+        {% endif %}
+    {% endfor %}
+    <img class = "avatar d-none" id = 'nophoto' src="{% static "mypage/nophoto.png" %}" />
+    <script type="text/javascript">
+      if (!$('img').is('#avatar')){
+        $('#nophoto').removeClass('d-none')
+      }
+    </script>
     {% if user.is_authenticated and login == user.username %}
-    <form action="/loginsys/edit/uploadimage/" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <form action="/loginsys/edit/uploadimage/" method="post" enctype="multipart/form-data">{% csrf_token %}{# Триггер, отправляет информацию из формы на сервер после выбора фотографии #}
       {% if check == 1 %}
-        <label for="id_image" class="profilblock" style="cursor:pointer"><b>Обновить</b></label>
-        <a href="/loginsys/edit/deleteimage"><label class="profilblock" style="cursor:pointer"><b>Удалить</b></label></a>
+        <label for="id_image" class="profilblock col-12" style="cursor:pointer"><b>Обновить</b></label>
+        <a href="/loginsys/edit/deleteimage"><label class="profilblock col-12" style="cursor:pointer"><b>Удалить</b></label></a>
       {% else %}
-        <label for="id_image" class="profilblock" style="cursor:pointer"><b>Загрузить аватарку</b></label>
+        <label for="id_image" class="profilblock col-12" style="cursor:pointer"><b>Загрузить аватарку</b></label>
       {% endif %}
       {{Addimage}}
       <input type="submit" name="" value="Отправить файл" id = "addavatarbtn" style="display:none">
@@ -29,9 +33,9 @@
         function check(){
           $('#addavatarbtn').trigger('click');
         });
-      </script>  {# Триггер, отправляет информацию из формы на сервер после выбора фотографии #}
+      </script>
     </form>
-    <label class="profilblock" id="editbutton" style="cursor:pointer" onclick=""><b>Редактировать</b></label>
+    <label class="profilblock col-12 position-" id="editbutton" style="cursor:pointer" onclick=""><b>Редактировать</b></label>
     <label class="profilblock d-none" id="save" style="cursor:pointer" onclick=""><b>Сохранить</b></label>
     {% endif %}
   </div>
