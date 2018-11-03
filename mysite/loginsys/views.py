@@ -70,7 +70,7 @@ def mypage(request, login):
 
     args['login'] = login
     if request.method == 'POST':
-        edit = {}
+        edit = {} #Cобирает данные из форм
         edit['editstatus'] = request.POST.get('editstatus')
         edit['editfirstname'] = request.POST.get('editfirstname')
         edit['editlastname'] = request.POST.get('editlastname')
@@ -79,23 +79,23 @@ def mypage(request, login):
         edit['editemail'] = request.POST.get('editemail')
         edit['editcity'] = request.POST.get('editcity')
         edit['editphonenumber'] = request.POST.get('editphonenumber')
-        edituser = User.objects.get(id = str(user_id))
-        editadditionaluser = AdditionalUsers.objects.get(user_id = str(user_id))
+        edituser = User.objects.get(id = str(user_id)) #Находит юзера по ид в табл Юзера
+        editadditionaluser = AdditionalUsers.objects.get(user_id = str(user_id)) #Находит юзера по ид в табл Больше о Юзере
 
+        #Изменяет информацию о юзере собранными данными в табл Юзера
         edituser.first_name = edit['editfirstname']
         edituser.last_name = edit['editlastname']
         edituser.username = edit['editloginuser']
         edituser.email = edit['editemail']
 
-
+        #Изменяет информацию о юзере собранными данными в табл  Больше о Юзере
         editadditionaluser.city = edit['editcity']
         editadditionaluser.date_of_birth = edit['editdate_of_birth']
         editadditionaluser.status = edit['editstatus']
         editadditionaluser.phonenumber = edit['editphonenumber']
-
+        # Сохраняет таблицы
         edituser.save()
         editadditionaluser.save()
-        print(edit)
     return render(request,'loginsys/mypage.html',args)
 
 def uploadimage(request):

@@ -41,7 +41,6 @@ a{
 .mainblock{
 	background-color: #FFFFFF;
 	min-height: 800px;
-	overflow: hidden;
 }
 @media screen and (max-width:600px){
 	.mainblock{
@@ -182,3 +181,64 @@ max-width: 100%;
 		font-size: 12pt;
 	}
 	}
+/* click */
+.millionere{
+	display: flex;
+}
+.button_panel{
+	width: 100%
+}
+.gif_panel{
+	width: 100%;
+	position:relative
+}
+.tables{
+	height: 100px;
+}
+#tablecats{
+	position: absolute;
+	height: 100%;
+}
+.cats_gif{
+	height: 200px;
+
+}
+@media screen and (max-width:500px){
+	.millionere{
+		display: block;
+	}
+	.cats_gif{
+		width: 300px;
+	}
+	#tablecats{
+		width: 300px;
+	}
+}
+.div_buttons{
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+#plus_button{
+	cursor: pointer;
+	width: 100%;
+	border-radius: 50%;
+}
+#plus_cats_button{
+	cursor: pointer;
+	width: 80%;
+}
+#upgrade_plus{
+	cursor: pointer;
+	width: 80%;
+	border-radius: 10%;
+}
+
+@media screen and (max-width:400px){
+	.div_plus_button{
+	 width: 25%;
+	}
+	.div_plus_cats_button{
+		width: 25%;
+	}
+}

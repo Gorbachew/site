@@ -1,0 +1,86 @@
+{% extends "main/maintemplate.html" %}
+{% block content %}
+{% load staticfiles %}
+{% if Player and user.is_authenticated %}
+	{% for score in ScorePlayer %}
+	<div class="millionere">
+			<div class="button_panel">
+				<table>
+					<tr>
+						<td>
+							<h2>Рублей:</h2>
+						</td>
+						<td>
+							<h2 id="score" name="score">{{ score.score }}</h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h4>Кол-во помошников:</h4>
+						</td>
+						<td>
+							<h4 id="cats" name="cats">{{ score.cats }}</h4>
+						</td>
+					</tr>
+				</table>
+				<div class="tables justify-content-center">
+						<div class="div_buttons col-4 p-0">
+							{# Кнопка прибавления счета #}
+							<img id='plus_button' class='plus_button' name = 'plus_button' src="{% static 'click/img/onerub.png' %}" value="">
+							<span class = 'd-none' id = 'currency' >{{ score.currency}}</span>
+						</div>
+						<div class="div_buttons col-4 p-0">
+							{# Кнопка прибавления счета #}
+							<img id='plus_cats_button' class='plus_cats_button' name = 'plus_cats_button' src="{% static 'click/img/moneycat1.png' %}" value="">
+							<h6 class = 'float-left'>Цена:</h6><h6 id = 'price_cats'>0</h6>
+						</div>
+						<div class="div_buttons col-4 p-0">
+							{# Кнопка прибавления счета #}
+							<img id='upgrade_plus' class='upgrade_plus' name = 'upgrade_plus' src="{% static 'click/img/upgrade.png' %}" value="">
+							<h6 class = 'float-left'>Цена:</h6><h6 id = 'price_upgrade_plus'>0</h6>
+						</div>
+				</div>
+				<div class="div_buttons d-none">
+					<input id="standup_russia" class = "btn btn-danger" type="button" name="standup_russia" value="Поднять страну с колен">
+				</div>
+			</div>
+			<div class="gif_panel p-0">
+				<div class="cats_gif d-none p-0 " id = "cats_gif">
+					<div class="d-flex p-0 m-0"id="tablecats">
+						<img src="{% static 'click/img/tablecatsleft.png' %}" class="col-4 p-0 m-0" id="">
+						<img src="{% static 'click/img/tablecatscenter.png' %}" class="col-4 p-0 m-0" id="">
+						<img src="{% static 'click/img/tablecatsright.png' %}" class="col-4 p-0 m-0" id="">
+					</div>
+					<img src="{% static 'click/img/goldcat.gif' %}" class="col-4 p-0 m-0 d-none" id="left_cat">
+					<img src="{% static 'click/img/bankcat.gif' %}" class="col-4 p-0 m-0 d-none" id="center_cat">
+					<img src="{% static 'click/img/businesscat.gif' %}" class="col-4 p-0 m-0 d-none" id="right_cat">
+
+				</div>
+
+			</div>
+
+	</div>
+
+{% endfor %}
+	{# <button type="button" name="btn2" class="btn btn-info" onclick="helpers(),test()">Купить помошника</button> #}
+	<!-- <button type="button" name="btn3" class="btn btn-info" onclick="test()">Какой счет?</button> -->
+
+
+{% elif user.is_authenticated %}
+<!-- Если пользователь авторизирован, но про него нет информации в БД игры высвечивается эта форма -->
+<div class="register">
+	<form class="" action="/click/newgame/" method="post">{% csrf_token %}
+		<input class="btn btn-primary" type="submit" name="begin" value="Начать">
+		{{ Form.user }}
+		<script type="text/javascript">
+			$('#id_user').val("{{user.id}}");
+		</script>
+	</form>
+</div>
+{% else %}
+<h4 class="bg-danger text-light text-center d-flex justify-content-center"> Войдите или зарегистрируйтесь, чтобы начать играть</h4>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'click/js/engine.js' %}"></script>
+{% endblock %}
