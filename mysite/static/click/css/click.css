@@ -1,0 +1,363 @@
+/* Kingdom */
+#kingdom{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background: gray;
+}
+/* FIRST MENU */
+#first_menu{
+	width: 25%;
+	height: 100%;
+	background: red;
+}
+#scores{
+	width: 100%;
+	height: 20%;
+	background: yellow;
+	font-size: 18pt;
+	font-weight: bold;
+}
+.div_score{
+	width: 100%;
+	height: 30%;
+	display: flex;
+}
+.scores_icon{
+	width: 20%;
+	height: 80%;
+}
+#coin{
+	width: 100%;
+	height: 20%;
+	background: green;
+}
+.plus_button{
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.plus_button_more_fifty{
+	position: relative;
+	cursor: pointer;
+	width: 100%;
+	height: 60%;
+	top: 30px;
+}
+#statistic{
+	width: 100%;
+	height: 60%;
+	background: black;
+}
+/* FIRST MENU */
+/* VISUAL_BLOCK */
+#visual_block{
+	width: 50%;
+	height: 100%;
+	background: green;
+}
+#buttons{
+	width: 100%;
+	height: 5%;
+	background: black;
+	display: flex;
+	justify-content: flex-end;
+}
+#open_second_menu{
+	width: 35%;
+	height: 100%;
+	background: black;
+	color: white;
+	display: none;
+}
+
+#castle{
+	width: 100%;
+	height: 650px;
+	background: gray;
+	overflow: auto;
+	position: relative;
+}
+#image_place{
+	width: 100%;
+	height: 1500px;
+	position: absolute;
+	background-image:
+
+	url(/static/click/img/builds/ruined_wall2.png),
+	url(/static/click/img/builds/ruined_wall.png),
+	url(/static/click/img/builds/ruined_tower2.png),
+	url(/static/click/img/builds/ruined_tower1.png),
+	url(/static/click/img/builds/ruined_stock.png),
+	url(/static/click/img/builds/ruined_bridge.png),
+	url(/static/click/img/builds/ruined_bridge2.png),
+	url(/static/click/img/builds/ruined_house1.png),
+	url(/static/click/img/builds/ruined_house2.png),
+
+	url(/static/click/img/land/birch_anim.gif),
+	url(/static/click/img/land/oak_anim.gif),
+	url(/static/click/img/land/spruce_anim.gif),
+	url(/static/click/img/land/bush_anim.gif),
+	url(/static/click/img/land/land.png);
+	background-size: 100% 100%;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.areas{
+	width: 100%;
+	height: 10%;
+	position: relative;
+}
+#bottom_menu{
+	width: 100%;
+	height: 13.7%;
+	background: black;
+}
+/* VISUAL_BLOCK */
+/* SECOND_BLOCK */
+#second_menu{
+	width: 25%;
+	height: 100%;
+	background: blue;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+}
+#close_second_menu{
+ display: none;
+}
+#switch{
+	width: 100%;
+	height: 10%;
+	background: red;
+	display: flex;
+}
+.switch_btn{
+	background: black;
+	color: white;
+	width: 33.4%;
+	height: 100%;
+}
+#builds{
+	width: 100%;
+	height: 90%;
+	background: black;
+}
+#people{
+	width: 100%;
+	height: 90%;
+	background: white;
+}
+#events{
+	width: 100%;
+	height: 90%;
+	background: red;
+}
+#mobile{
+	display: none;
+}
+/* SECOND_BLOCK */
+@media screen and (max-width:500px){
+	#kingdom{
+		flex-wrap: wrap;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	#buttons{
+		height: 9%;
+	}
+	#first_menu{
+		display: none;
+	}
+	#visual_block{
+		width: 100%;
+		height: 60%;
+	}
+	#open_second_menu{
+		display: block;
+	}
+	#second_menu{
+		width: 100%;
+		margin-left: 100%;
+		position: absolute;
+ }
+	 #close_second_menu{
+		display: block;
+	 }
+	 #castle{
+		 height: 100%;
+	 }
+	 	#mobile{
+		display: block;
+		width: 100%;
+		height: 40%;
+		background: red;
+	}
+
+	#scores{
+		width: 100%;
+		height: 15%;
+		background: yellow;
+		font-size: 18pt;
+		font-weight: bold;
+		display: flex;
+	}
+	#statistic{
+		height: 55%;
+	}
+	.div_score{
+		width: 100%;
+		height: 100%;
+		padding-left: 10px;
+	}
+	.scores_icon{
+		width: 10%;
+		height: 80%;
+		padding-top: 10px;
+	}
+	#coin{
+		height: 30%;
+		display: flex;
+		justify-content: center;
+	}
+	.plus_button{
+		cursor: pointer;
+		width: 35%;
+		height: 100%;
+		border-radius: 50%;
+	}
+	.plus_button_more_fifty_less500{
+		position: static;
+		cursor: pointer;
+		width: 80%;
+		height: 100%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* click */
+.millionere{
+	display: flex;
+}
+.button_panel{
+	width: 100%
+}
+.gif_panel{
+	width: 100%;
+	position:relative
+}
+.tables{
+	height: 100px;
+}
+.line_interacrive_objects{
+	width: 100%;
+	height: 110px;
+}
+.push_upgrades{
+	cursor: pointer;
+	width: 80%;
+}
+.price{
+
+	pointer-events: none;
+
+}
+#tablecats{
+	position: absolute;
+	height: 100%;
+}
+.cats_gif{
+	height: 200px;
+}
+
+@media screen and (max-width:500px){
+	.millionere{
+		display: block;
+	}
+	.cats_gif{
+		width: 300px;
+	}
+	#tablecats{
+		width: 300px;
+	}
+}
+.build{
+	position: absolute;
+	width: 100%;
+	height: 150px;
+	overflow: hidden;
+}
+/* bastshoes */
+.count_upgrades{
+	background-color: white;
+	pointer-events: none;
+	position: absolute;
+	bottom:70%;
+}
+#bastshoes_gif{
+	position: absolute;
+	left: 4%;
+	top: 23%;
+	width: 92%;
+	height: 76%;
+}
+.unit{
+	position: relative;
+	top: 20%;
+	height: 80%;
+	width: 12%;
+}
+/* bastshoes |*/
+.div_buttons{
+	width: 100px;
+	height: 100px;
+	float: left;
+	overflow: hidden;
+}
+
+
+#plus_cats_button{
+	cursor: pointer;
+	width: 80%;
+}
+#upgrade_plus{
+	cursor: pointer;
+	width: 80%;
+	border-radius: 10%;
+}
+
+@media screen and (max-width:400px){
+	.div_plus_button{
+	 width: 25%;
+	}
+	.div_plus_cats_button{
+		width: 25%;
+	}
+}

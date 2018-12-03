@@ -1,50 +1,171 @@
 {% extends "main/maintemplate.html" %}
-{% block content %}
 {% load staticfiles %}
-{% if Player and user.is_authenticated %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static "click/css/click.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "click/css/map.css" %}">
+{% endblock %}
+{% load staticfiles %}
+{% block content %}
+{% if id_player and user.is_authenticated %}
 	{% for score in ScorePlayer %}
-	<div class="millionere">
+	<div id="kingdom">
+		<div id ="first_menu">
+			<div id = "scores">
+				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score" name="scores">{{ score.score }}</p></div>
+				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score_cash" name="scores">{{ score.cash }}</p></div>
+			</div>
+			<div id = "coin">
+				<img id='plus_button' class='plus_button' name = 'plus_button' src="" value=""><!--{% static 'click/img/money/onerub.png' %}-->
+				<span class = 'd-none' id = 'currency' >{{score.currency }}</span>
+			</div>
+			<div id = "statistic">
+				<p style="color: white; font-size: 18pt;">Upgrades</p>
+			</div>
+		</div>
+		<div id = "visual_block">
+			<div id = "buttons">
+				<input type="button" name="open_second_menu" value="Открыть меню" id = "open_second_menu">
+			</div>
+			<div id = "castle">
+						{# <img src="{% static 'click/img/test.jpg' %}" id = "image_place"> #}
+					<div id="image_place">
+
+						<div id="Castle_area" class="areas">
+							<img src="{% static '/click/img/builds/Ruined_Castle.gif' %}" id = "Ruined_Castle">
+						</div>
+						<div id="Rich_area" class="areas">
+
+						</div>
+						<div id="Religious_area" class="areas">
+
+						</div>
+						<div id="Defense_area" class="areas">
+
+						</div>
+						<div id="Army_area" class="areas">
+
+						</div>
+						<div id="Thief_area" class="areas">
+
+						</div>
+						<div id="Scientist_area" class="areas">
+
+						</div>
+						<div id="Merchant_area" class="areas">
+
+						</div>
+						<div id="Craftsman_area" class="areas">
+
+						</div>
+						<div id="Peasant_area" class="areas">
+
+						</div>
+					</div>
+			</div>
+			<div id="bottom_menu">
+
+			</div>
+		</div>
+		<div id="second_menu">
+			<div id = "switch">
+				<input type="button" class = "switch_btn" name="builds" value="Здания" id="switch_builds">
+				<input type="button" class = "switch_btn" name="peoples" value="Люди" id="switch_peoples">
+				<input type="button" class = "switch_btn" name="events" value="Улучшения" id="switch_upgrades">
+				<input type="button" class = "switch_btn" name="close_second_menu" value="Закрыть" id="close_second_menu">
+			</div>
+			<div id = "builds" class="">
+
+			</div>
+			<div id = "people" class="d-none">
+
+			</div>
+			<div id = "events" class="d-none">
+
+			</div>
+		</div>
+		<div id="mobile">
+			<div id = "scores">
+				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score" name="scores">{{ score.score }}</p></div>
+				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score_cash" name="scores">{{ score.cash }}</p></div>
+			</div>
+			<div id = "statistic">
+				<p style="color: white; font-size: 18pt;">Statistic</p>
+			</div>
+			<div id = "coin">
+				<img id='plus_button' class='plus_button' name = 'plus_button' src="" value=""><!--{% static 'click/img/money/onerub.png' %}-->
+				<span class = 'd-none' id = 'currency' >{{score.currency }}</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<span id = "date_last_exit" class="d-none">{{score.date_last_exit|date:"d-m-Y H:i"}}</span>
+	<div class="millionere d-none">
 			<div class="button_panel">
-				<table>
-					<tr>
-						<td>
-							<h2>Рублей:</h2>
-						</td>
-						<td>
-							<h2 id="score" name="score">{{ score.score }}</h2>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<h4>Кол-во помошников:</h4>
-						</td>
-						<td>
-							<h4 id="cats" name="cats">{{ score.cats }}</h4>
-						</td>
-					</tr>
-				</table>
+				<h2>Рублей:</h2><h2 id="score" name="score">{{ score.score }}</h2>
+				<h2>Рублей в минуту:</h2><h2 id="score_cash" name="score_cash">{{ score.cash }}</h2>
 				<div class="tables justify-content-center">
+					<div class="line_interacrive_objects">
 						<div class="div_buttons col-4 p-0">
 							{# Кнопка прибавления счета #}
-							<img id='plus_button' class='plus_button' name = 'plus_button' src="{% static 'click/img/onerub.png' %}" value="">
-							<span class = 'd-none' id = 'currency' >{{ score.currency}}</span>
+							<img id='plus_button' class='plus_button' name = 'plus_button' src="{% static 'click/img/money/onerub.png' %}" value="">
+							<span class = 'd-none' id = 'currency' >{{score.currency }}</span>
 						</div>
 						<div class="div_buttons col-4 p-0">
 							{# Кнопка прибавления счета #}
-							<img id='plus_cats_button' class='plus_cats_button' name = 'plus_cats_button' src="{% static 'click/img/moneycat1.png' %}" value="">
-							<h6 class = 'float-left'>Цена:</h6><h6 id = 'price_cats'>0</h6>
+							<img id='upgrade_build' class='push_upgrades' name = 'upgrade_build' src="{% static 'click/img/buildone.png' %}" value="">
+							<span class = 'd-none' id = 'levelbuild' >{{score.levelbuild}}</span>
+							<h6 class = 'float-left'>Цена:</h6><h6 class = 'price' id = 'price_upgrade_build'>{{ score.price_levelbuild }}</h6>
 						</div>
 						<div class="div_buttons col-4 p-0">
 							{# Кнопка прибавления счета #}
-							<img id='upgrade_plus' class='upgrade_plus' name = 'upgrade_plus' src="{% static 'click/img/upgrade.png' %}" value="">
-							<h6 class = 'float-left'>Цена:</h6><h6 id = 'price_upgrade_plus'>0</h6>
+							<img id='upgrade_plus' class='push_upgrades' name = 'upgrade_plus' src="{% static 'click/img/upgrade.png' %}" value="">
+							<h6 class = 'float-left'>Цена:</h6><h6 class = 'price' id = 'price_upgraide_currency'>{{ score.price_upgraide_currency }}</h6>
 						</div>
+					</div>
+					<div class="line_interacrive_objects" id="upgrades">
+						<h6 class="m-0">upgrades</h6>
+						<div class="div_buttons col-4 p-0 d-none" id='div_plus_bastshoes_button'>
+							{# Кнопка прибавления счета #}
+							<img id='plus_bastshoes_button' class='push_upgrades' name = 'plus_bastshoes_button' src="{% static 'click/img/bastshoesicon.png' %}" value="">
+							<h6 class="count_upgrades" id ="count_bastshoes" name="count_bastshoes" class = "">{{ score.bastshoes }}</h6>
+							<h6 class = 'float-left'>Цена:</h6><h6 class = 'price' id = 'price_bastshoes'>{{ score.price_bastshoes }}</h6>
+						</div>
+						<div class="div_buttons col-4 p-0 d-none" id='div_plus_cats_button'>
+							{# Кнопка прибавления счета #}
+							<img id='plus_cats_button' class='push_upgrades' name = 'plus_cats_button' src="{% static 'click/img/moneycat1.png' %}" value="">
+							<h6 class="count_upgrades" id ="cats" name="cats" class = "">{{ score.cats }}</h6>
+							<h6 class = 'float-left'>Цена:</h6><h6 class = 'price' id = 'price_cats'>{{ score.price_cats }}</h6>
+						</div>
+					</div>
 				</div>
 				<div class="div_buttons d-none">
 					<input id="standup_russia" class = "btn btn-danger" type="button" name="standup_russia" value="Поднять страну с колен">
 				</div>
 			</div>
+			<p id="check"></p>
 			<div class="gif_panel p-0">
+				<div class =  "build">
+					<img src="{% static 'click/img/firstfloar.png' %}" class="build d-none" id="build">
+					<div id = "bastshoes_gif">
+					</div>
+				</div>
+
+				<!--
 				<div class="cats_gif d-none p-0 " id = "cats_gif">
 					<div class="d-flex p-0 m-0"id="tablecats">
 						<img src="{% static 'click/img/tablecatsleft.png' %}" class="col-4 p-0 m-0" id="">
@@ -54,14 +175,13 @@
 					<img src="{% static 'click/img/goldcat.gif' %}" class="col-4 p-0 m-0 d-none" id="left_cat">
 					<img src="{% static 'click/img/bankcat.gif' %}" class="col-4 p-0 m-0 d-none" id="center_cat">
 					<img src="{% static 'click/img/businesscat.gif' %}" class="col-4 p-0 m-0 d-none" id="right_cat">
-
+					-->
 				</div>
 
 			</div>
 
 	</div>
-
-{% endfor %}
+	{% endfor %}
 	{# <button type="button" name="btn2" class="btn btn-info" onclick="helpers(),test()">Купить помошника</button> #}
 	<!-- <button type="button" name="btn3" class="btn btn-info" onclick="test()">Какой счет?</button> -->
 
@@ -81,6 +201,7 @@
 <h4 class="bg-danger text-light text-center d-flex justify-content-center"> Войдите или зарегистрируйтесь, чтобы начать играть</h4>
 {% endif %}
 {% endblock %}
+
 {% block scripts %}
 <script src="{% static 'click/js/engine.js' %}"></script>
 {% endblock %}

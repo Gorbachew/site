@@ -1,0 +1,91 @@
+/* NEWS */
+#news{
+	background: #DEDEDE;
+	overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+}
+.news{
+	padding: 5px 10px 10px 10px;
+	box-shadow: 0px 0px 5px 0px #64727A;
+	min-height: 180px;
+	width: 100%;
+	margin: 0px 0px 7px 5px;
+	background: white;
+	overflow: hidden;
+}
+#new{
+	padding: 5px 15px 10px 10px;
+	background: white;
+	overflow-x: hidden;
+	min-height: 170px;
+	width: 100%;
+}
+.comments{
+	padding: 5px 10px 10px 10px;
+	background: #DEDEDE;
+	width: 100%;
+	max-height: 380px;
+	overflow: auto;
+
+}
+.divcommavatar{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+@media screen and (max-width:600px){
+	.divcommavatar{
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	}
+.commavatar{
+	width: 100%;
+}
+#comment{
+	background: white;
+	min-height: 60px;
+	padding-left: 5px;
+	box-shadow: 0px 0px 5px 0px #64727A;
+}
+#addcomments{
+	margin: 5px 10px 10px 10px;
+	width: 50%;
+	height: 100px;
+}
+#date{
+	font-size: 10pt;
+	background-color:#D2EFFF;
+	padding-left: 5px
+}
+#title{
+	color: black;
+	font-size: 15pt;
+	font-weight:bold
+}
+#post{
+	font-size: 13pt;
+}
+.likes{
+	cursor: pointer;
+	float: left;
+	font-size: 13pt;
+}
+#comm{
+	color: black;
+	float: right;
+	font-size: 13pt;
+}
+#id_comm{
+	font-size: 10pt;
+	margin: 0px 0px 0px 5px;
+}
+/* ADDPOST */
+
+#titleAddpost{
+	width: 200px;
+}

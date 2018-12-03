@@ -12,6 +12,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.utils import timezone
 from main.views import avatar
+from django.http import HttpResponse
 # Create your views here.
 #Логика такая, в mysite/urls при указании в адресной строке https://adres/ django  переходит в приложение news и его файл urls.
 #Там он видит, что отстуствие какого-либо знака после это переход в функции views/news. Эта функция возвращает файл news.html с настройками вывода всех строк из таблицы Articlesself.
@@ -21,13 +22,13 @@ def news(request, page_number = 1):
     number_of_pages = 4
     args = Articles.objects.all().order_by('-date')
     current_page = Paginator(args,number_of_pages)
-    try:
-        BandAvatar = avatar(request,request.user.id)['BandAvatar']
-        #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
-        return render(request, 'news/news.html',{'articles': current_page.page(page_number),'BandAvatar':BandAvatar})
-    except:
-        #args['username'] = auth.get_user(request).username такая-же история как с news()
-        return redirect('/loginsys/login/')
+    # try:
+    BandAvatar = avatar(request,request.user.id)['BandAvatar']
+    #args['username'] = auth.get_user(request).username зачем-то добавил в массив информацию о юзере
+    return render(request, 'news/news.html',{'articles': current_page.page(page_number),'BandAvatar':BandAvatar})
+    # except:
+    #     #args['username'] = auth.get_user(request).username такая-же история как с news()
+    #     return redirect('/loginsys/login/')
 
 def new(request, new_id):
     comment_form = CommentForm
@@ -54,27 +55,29 @@ def new(request, new_id):
 
 def addlike(request, article_id):
     try:
-        return_path  = request.META.get('HTTP_REFERER','/')#Возврат на предыдущую страницу
-        check = LikesArticles.objects.filter(articles_id = article_id,author = auth.get_user(request).id)
-        if not check:#Если отстутвует запись в таблице, то выполняем добавление записи.
-            #Обновляем таблицу LikesArticles
-            likes = LikesArticles()
-            likes.articles = Articles.objects.get(id = article_id)
-            likes.date = timezone.now()
-            likes.author = request.user
-            likes.save()
-            #Cверяем количество лайков в таблице Статьи и кол-во лайков связанных с этой статьей в таблице ЛайкиСтатей
-            article = Articles.objects.get(id = article_id)
-            article.likes = LikesArticles.objects.filter(articles_id = article_id).count()
-            article.save()
-            return redirect(return_path)
-        else:#Если запись в таблице есть то удаляем ее.
-            article = Articles.objects.get(id = article_id)
-            check.delete()
-            article.likes = LikesArticles.objects.filter(articles_id = article_id).count()
-            article.save()
-            response = redirect(return_path)
-            return response
+        if request.GET:
+            article_id = request.GET['article_id']
+            check = LikesArticles.objects.filter(articles_id = article_id,author = auth.get_user(request).id)
+            if not check:#Если отстутвует запись в таблице, то выполняем добавление записи.
+                #Обновляем таблицу LikesArticles
+                likes = LikesArticles()
+                likes.articles = Articles.objects.get(id = article_id)
+                likes.date = timezone.now()
+                likes.author = request.user
+                likes.save()
+                #Cверяем количество лайков в таблице Статьи и кол-во лайков связанных с этой статьей в таблице ЛайкиСтатей
+                article = Articles.objects.get(id = article_id)
+                count_likes = LikesArticles.objects.filter(articles_id = article_id).count()
+                article.likes = count_likes
+                article.save()
+                return HttpResponse(count_likes)
+            else:#Если запись в таблице есть то удаляем ее.
+                article = Articles.objects.get(id = article_id)
+                check.delete()
+                count_likes = LikesArticles.objects.filter(articles_id = article_id).count()
+                article.likes = count_likes
+                article.save()
+                return HttpResponse(count_likes)
     except ObjectDoesNotExist:
         return redirect('loginsys/login/')
 

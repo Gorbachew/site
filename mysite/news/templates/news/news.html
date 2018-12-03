@@ -1,5 +1,8 @@
 {% extends "main/maintemplate.html" %}
-
+{% load staticfiles %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static "news/css/news.css" %}">
+{% endblock %}
 {% block content %}
 {# Скрипт делает активной кнопку страницы в панели сверху #}
 <script type="text/javascript">
@@ -11,13 +14,13 @@ $('#newses').toggleClass('active');
 
   <div class="news">
     <p id = "date">Опубликовано: {{ article.date|date:"d-m-Y в H:i" }}  Автор: <b><a href="/{{ article.author }}/">{{ article.author }}</a></b></p>
-    <a href="/news/{{ article.id }}/" id = "title"><p>{{ article.title|linebreaks  }}</p></a>
+    <a href="/news/{{ article.id }}/" id = "title"><p>{{ article.title|linebreaks  }}</p></a><span class="d-none" id="article_id">{{article.id}}</span>
     <p id = "post">{{ article.post|linebreaks|truncatechars:255  }}</p>
     <hr>
-    {% if  user.username %}
-    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    {% if  user.is_authenticated %}
+    <h5 class = 'likes'>Лайков:</h5><h5 class = 'likes' id = "like"> {{ article.likes }}</h5>
     {% else %}
-    <h5 id = "like">Лайков: {{ article.likes }}</h5>
+    <h5 id = "deactive_like">Лайков: {{ article.likes }}</h5>
     {% endif %}
     <a href="/news/{{ article.id }}/"><h5 class="m-0" id = "comm">{{ article.comm }} комментариев</h5></a>
   </div>
@@ -63,4 +66,7 @@ $('#newses').toggleClass('active');
   </ul>
 </nav>
 </div>
+{% endblock %}
+{% block scripts %}
+  <script src="{% static 'news/js/news.js' %}"></script>
 {% endblock %}

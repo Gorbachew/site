@@ -1,4 +1,8 @@
 {% extends "main/maintemplate.html" %}
+{% load staticfiles %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static "news/css/news.css" %}">
+{% endblock %}
 {% block content %}
 <script type="text/javascript">
   $('#newses').toggleClass('active');
@@ -12,14 +16,14 @@
       <a class = "text-danger" href="/news/deletenews/{{article.id}}/">Удалить пост</a>
     {% endif %}
     </b></p>
-    <p id = "title">{{ article.title }}</p>
+    <p id = "title">{{ article.title }}</p><span class="d-none" id="article_id">{{article.id}}</span>
     <hr>
     <p id="post">{{ article.post|linebreaks }}</p>
     <hr>
     {% if  user.is_authenticated %}
-    <h5 id = "like">Лайков: <a href="/news/addlike/{{article.id}}/"> {{ article.likes }}</a></h5>
+    <h5 class = 'likes'>Лайков:</h5><h5 class = 'likes' id = "like"> {{ article.likes }}</h5>
     {% else %}
-    <h5 id = "like">Лайков: {{ article.likes }}</h5>
+    <h5 id = "deactive_like">Лайков: {{ article.likes }}</h5>
     {% endif %}
     <h5 id="comm">Комментариев: {{article.comm}}</h5>
   </div>
@@ -30,7 +34,7 @@
             {% for avatar in avatarscomments %}   {# Обьявление изображения из папки media/images avatar это массив image это столб базыданных#}
               {% if comment.author_id == avatar.user_id and avatar.avatar == True %}
                 <a href="/{{ comment.author }}/">  <img class="commavatar" id = 'commentavatar'  src="{{ MEDIA_URL }}{{ avatar.image.url }}" /></a>
-              {% endif %}  
+              {% endif %}
             {% endfor %}
             {% load staticfiles %}
             <a href="/{{ comment.author }}/"> <img class="commavatar d-none" id = 'commentnophoto' src="{% static "mypage/nophoto.png" %}" /></a>
@@ -65,7 +69,7 @@
       {% csrf_token %}
       {% for field in form %}
         {{ field }}
-        <input type="submit" class="btn btn-info" value="Добавить комментарий">
+        <input type="submit" class="btn btn-info" id="add_comment" value="Добавить комментарий">
       {% endfor %}
     </form>
   </div>
@@ -73,7 +77,8 @@
   <h4 class="bg-danger text-light text-center d-flex justify-content-center"> Войдите или зарегистрируйтесь, чтобы оставлять комментарии</h4>
   {% endif %}
 
-
-
 </div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'news/js/news.js' %}"></script>
 {% endblock %}

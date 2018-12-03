@@ -1,3 +1,10 @@
+/* body{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+} */
 p{
 	word-wrap: break-word;
 }
@@ -62,97 +69,6 @@ a{
 	opacity: .9;
 	border: 1px solid #B2FFFE;
 }
-
-/* NEWS */
-#news{
-	background: #DEDEDE;
-	overflow-x: hidden;
-	height: 100%;
-	width: 100%;
-}
-.news{
-	padding: 5px 10px 10px 10px;
-	box-shadow: 0px 0px 5px 0px #64727A;
-	min-height: 180px;
-	width: 100%;
-	margin: 0px 0px 7px 5px;
-	background: white;
-	overflow: hidden;
-}
-#new{
-	padding: 5px 15px 10px 10px;
-	background: white;
-	overflow-x: hidden;
-	min-height: 170px;
-	width: 100%;
-}
-.comments{
-	padding: 5px 10px 10px 10px;
-	background: #DEDEDE;
-	width: 100%;
-	max-height: 380px;
-	overflow: auto;
-
-}
-.divcommavatar{
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-@media screen and (max-width:600px){
-	.divcommavatar{
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
-		overflow: hidden;
-	}
-	}
-.commavatar{
-	width: 100%;
-}
-#comment{
-	background: white;
-	min-height: 60px;
-	padding-left: 5px;
-	box-shadow: 0px 0px 5px 0px #64727A;
-}
-#addcomments{
-	margin: 5px 10px 10px 10px;
-	width: 50%;
-	height: 100px;
-}
-#date{
-	font-size: 10pt;
-	background-color:#D2EFFF;
-	padding-left: 5px
-}
-#title{
-	color: black;
-	font-size: 15pt;
-	font-weight:bold
-}
-#post{
-	font-size: 13pt;
-}
-#like{
-	float: left;
-	font-size: 13pt;
-}
-#comm{
-	color: black;
-	float: right;
-	font-size: 13pt;
-}
-#id_comm{
-	font-size: 10pt;
-	margin: 0px 0px 0px 5px;
-}
-/* ADDPOST */
-
-#titleAddpost{
-	width: 200px;
-}
 /* MYPAGE */
 .avatar{
 max-width: 100%;
@@ -181,64 +97,3 @@ max-width: 100%;
 		font-size: 12pt;
 	}
 	}
-/* click */
-.millionere{
-	display: flex;
-}
-.button_panel{
-	width: 100%
-}
-.gif_panel{
-	width: 100%;
-	position:relative
-}
-.tables{
-	height: 100px;
-}
-#tablecats{
-	position: absolute;
-	height: 100%;
-}
-.cats_gif{
-	height: 200px;
-
-}
-@media screen and (max-width:500px){
-	.millionere{
-		display: block;
-	}
-	.cats_gif{
-		width: 300px;
-	}
-	#tablecats{
-		width: 300px;
-	}
-}
-.div_buttons{
-	width: 100px;
-	height: 100px;
-	float: left;
-}
-#plus_button{
-	cursor: pointer;
-	width: 100%;
-	border-radius: 50%;
-}
-#plus_cats_button{
-	cursor: pointer;
-	width: 80%;
-}
-#upgrade_plus{
-	cursor: pointer;
-	width: 80%;
-	border-radius: 10%;
-}
-
-@media screen and (max-width:400px){
-	.div_plus_button{
-	 width: 25%;
-	}
-	.div_plus_cats_button{
-		width: 25%;
-	}
-}
