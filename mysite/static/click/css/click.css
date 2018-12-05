@@ -83,23 +83,7 @@
 	width: 100%;
 	height: 1500px;
 	position: absolute;
-	background-image:
-
-	url(/static/click/img/builds/ruined_wall2.png),
-	url(/static/click/img/builds/ruined_wall.png),
-	url(/static/click/img/builds/ruined_tower2.png),
-	url(/static/click/img/builds/ruined_tower1.png),
-	url(/static/click/img/builds/ruined_stock.png),
-	url(/static/click/img/builds/ruined_bridge.png),
-	url(/static/click/img/builds/ruined_bridge2.png),
-	url(/static/click/img/builds/ruined_house1.png),
-	url(/static/click/img/builds/ruined_house2.png),
-
-	url(/static/click/img/land/birch_anim.gif),
-	url(/static/click/img/land/oak_anim.gif),
-	url(/static/click/img/land/spruce_anim.gif),
-	url(/static/click/img/land/bush_anim.gif),
-	url(/static/click/img/land/land.png);
+	background-image:	url(/static/click/img/land/land.png);
 	background-size: 100% 100%;
 }
 ::-webkit-scrollbar {
@@ -114,6 +98,9 @@
 	width: 100%;
 	height: 13.7%;
 	background: black;
+}
+.names_object{
+	color: white;
 }
 /* VISUAL_BLOCK */
 /* SECOND_BLOCK */

@@ -28,10 +28,32 @@
 			</div>
 			<div id = "castle">
 						{# <img src="{% static 'click/img/test.jpg' %}" id = "image_place"> #}
-					<div id="image_place">
+					<div id="image_place" class="build_ruined_wall2">
+						<div class="land">
+							<img src="{% static 'click/img/land/bird.gif' %}" id="bush_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/river_anim.gif' %}" id="river_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/birch_anim.gif' %}" id="birch_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/oak_anim.gif' %}" id="oak_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/spruce_anim.gif' %}" id="spruce_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/bush_anim.gif' %}" id="bush_anim" class="background_image" width="100%" height="100%">
+
+
+						</div>
+						<div id="ruined_builds">
+							<img src="{% static 'click/img/builds/Ruined_Castle.gif' %}" id = "Ruined_Castle" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_wall2.png' %}" id="ruined_wall2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_wall.png' %}" id="ruined_wall" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_tower2.png' %}" id="ruined_tower2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_tower1.png' %}" id="ruined_tower1" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_bridge.png' %}" id="ruined_bridge" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_bridge2.png' %}" id="ruined_bridge2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_house2.png' %}" id="ruined_house2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_house1.png' %}" id="ruined_house1" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined_stock.png' %}" id="ruined_stock" class="background_image" width="100%" height="100%">
+						</div>
 
 						<div id="Castle_area" class="areas">
-							<img src="{% static '/click/img/builds/Ruined_Castle.gif' %}" id = "Ruined_Castle">
+
 						</div>
 						<div id="Rich_area" class="areas">
 
@@ -74,7 +96,13 @@
 				<input type="button" class = "switch_btn" name="close_second_menu" value="Закрыть" id="close_second_menu">
 			</div>
 			<div id = "builds" class="">
-
+				<input type="checkbox" name="ruined_castle" id = "check_ruined_castle" value="" checked><span class = "names_object">Разрушенный замок</span><br>
+				<input type="checkbox" name="ruined_house1" id = "check_ruined_houses" value="" checked><span class = "names_object">Крестьянские дома</span><br>
+				<input type="checkbox" name="ruined_bridge1" id = "check_ruined_bridge1" value="" checked><span class = "names_object">Мост1</span><br>
+				<input type="checkbox" name="ruined_bridge2" id = "check_ruined_bridge2"  value="" checked><span class = "names_object">Мост2</span><br>
+				<input type="checkbox" name="ruined_stock" id = "check_ruined_stock" value="" checked><span class = "names_object">Амбар</span><br>
+				<input type="checkbox" name="ruined_tower1" id = "check_ruineds_wall" value="" checked><span class = "names_object">Руины стены</span><br>
+				<input type="checkbox" name="ruined_wall2" id = "check_ruined_deffence_castle" value="" checked><span class = "names_object">Оборона у замка</span><br>
 			</div>
 			<div id = "people" class="d-none">
 
@@ -100,19 +128,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--
 	<span id = "date_last_exit" class="d-none">{{score.date_last_exit|date:"d-m-Y H:i"}}</span>
 	<div class="millionere d-none">
 			<div class="button_panel">
@@ -181,6 +197,7 @@
 			</div>
 
 	</div>
+-->
 	{% endfor %}
 	{# <button type="button" name="btn2" class="btn btn-info" onclick="helpers(),test()">Купить помошника</button> #}
 	<!-- <button type="button" name="btn3" class="btn btn-info" onclick="test()">Какой счет?</button> -->
@@ -204,4 +221,5 @@
 
 {% block scripts %}
 <script src="{% static 'click/js/engine.js' %}"></script>
+<script src="{% static 'click/js/objects.js' %}"></script>
 {% endblock %}

@@ -1,6 +1,20 @@
 #Castle_area{
 }
-#Ruined_Castle{
-  position: relative;
-  left: 43%;
+.background_image{
+	position: absolute;
 }
+/* url(/static/click/img/builds/ruined_wall.png),
+url(/static/click/img/builds/ruined_tower2.png),
+url(/static/click/img/builds/ruined_tower1.png),
+url(/static/click/img/builds/ruined_stock.png),
+url(/static/click/img/builds/ruined_bridge.png),
+url(/static/click/img/builds/ruined_bridge2.png),
+url(/static/click/img/builds/ruined_house1.png),
+url(/static/click/img/builds/ruined_house2.png),
+
+
+url(/static/click/img/land/river_anim.gif),
+url(/static/click/img/land/birch_anim.gif),
+url(/static/click/img/land/oak_anim.gif),
+url(/static/click/img/land/spruce_anim.gif),
+url(/static/click/img/land/bush_anim.gif), */
