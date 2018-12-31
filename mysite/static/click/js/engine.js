@@ -1,20 +1,20 @@
 $('#switch_builds').click(
   function open_builds(){
-  $('#builds').removeClass('d-none');
+  $('#menu_builds').removeClass('d-none');
   $('#people').addClass('d-none');
   $('#upgrades').addClass('d-none');
 }
 );
 $('#switch_peoples').click(
   function open_peoples(){
-  $('#builds').addClass('d-none');
+  $('#menu_builds').addClass('d-none');
   $('#people').removeClass('d-none');
   $('#upgrades').addClass('d-none');
 }
 );
 $('#switch_upgrades').click(
   function open_upgrades(){
-  $('#builds').addClass('d-none');
+  $('#menu_builds').addClass('d-none');
   $('#people').addClass('d-none');
   $('#upgrades').removeClass('d-none');
 }

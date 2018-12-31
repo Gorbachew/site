@@ -28,31 +28,98 @@
 			</div>
 			<div id = "castle">
 						{# <img src="{% static 'click/img/test.jpg' %}" id = "image_place"> #}
-					<div id="image_place" class="build_ruined_wall2">
+					<div id="image_place">
 						<div class="land">
 							<img src="{% static 'click/img/land/bird.gif' %}" id="bush_anim" class="background_image" width="100%" height="100%">
 							<img src="{% static 'click/img/land/river_anim.gif' %}" id="river_anim" class="background_image" width="100%" height="100%">
 							<img src="{% static 'click/img/land/birch_anim.gif' %}" id="birch_anim" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/land/oak_anim.gif' %}" id="oak_anim" class="background_image" width="100%" height="100%">
+							{# <img src="{% static 'click/img/land/oak_anim.gif' %}" id="oak_anim" class="background_image" width="100%" height="100%"> #}
+							<img src="{% static 'click/img/land/3oak_anim.gif' %}" id="oak_anim" class="background_image" width="100%" height="100%">
 							<img src="{% static 'click/img/land/spruce_anim.gif' %}" id="spruce_anim" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/land/bush_anim.gif' %}" id="bush_anim" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/land/3bush_anim.gif' %}" id="bush_anim" class="background_image" width="100%" height="100%">
+						</div>
 
+						<div id="builds">
+							<!-- road_and_bridge -->
+							<img src="{% static 'click/img/builds/road_and_bridge.png' %}" id="road_and_bridge" class="background_image" width="100%" height="100%">
+							<!-- Level_One -->
+							<img src="{% static 'click/img/builds/1pigsty.gif' %}" id="pigsty" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/1shack.gif' %}" id="shack" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/1stock.gif' %}" id="stock" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/1village_head_red.gif' %}" id="village_head_red" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/1field_left.gif' %}" id="field_left" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/1field_right.gif' %}" id="field_right" class="background_image" width="100%" height="100%">
+							<!-- Level_Two -->
+							<img src="{% static 'click/img/builds/2master_cart.gif' %}" id="2master_cart" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/2forge.gif' %}" id="2forge" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/2mill.gif' %}" id="2mill" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/2woodcutter.gif' %}" id="2woodcutter" class="background_image" width="100%" height="100%">
+							<!-- Level_Tree -->
+							<img src="{% static 'click/img/builds/3Trade_Shop.gif' %}" id="3Trade_Shop" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/3Market.gif' %}" id="3Market" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/3Merchants_Guild_red.gif' %}" id="3Merchants_Guild_red" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/3Trade_stock.gif' %}" id="3Trade_stock" class="background_image" width="100%" height="100%">
+							<!-- Level_Four -->
+							<img src="{% static 'click/img/builds/4clerk_house.gif' %}" id="4clerk_house" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/4library.gif' %}" id="4library" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/4scientist_house.gif' %}" id="4scientist_house" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/4writer_house.gif' %}" id="4writer_house" class="background_image" width="100%" height="100%">
+							<!-- Level_five -->
+							<img src="{% static 'click/img/builds/5master_thief.gif' %}" id="5master_thief" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/5sale_hause.gif' %}" id="5sale_hause" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/5strange-hause.gif' %}" id="5strange-hause" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/5tavern.gif' %}" id="5tavern" class="background_image" width="100%" height="100%">
+							<!-- Level_Six -->
+							<img src="{% static 'click/img/builds/6watch_tower.gif' %}" id="6watch_tower" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/6Checkpoint.gif' %}" id="6Checkpoint" class="background_image" width="100%" height="100%">
 
 						</div>
+
 						<div id="ruined_builds">
-							<img src="{% static 'click/img/builds/Ruined_Castle.gif' %}" id = "Ruined_Castle" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_wall2.png' %}" id="ruined_wall2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_wall.png' %}" id="ruined_wall" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_tower2.png' %}" id="ruined_tower2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_tower1.png' %}" id="ruined_tower1" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_bridge.png' %}" id="ruined_bridge" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_bridge2.png' %}" id="ruined_bridge2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_house2.png' %}" id="ruined_house2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_house1.png' %}" id="ruined_house1" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined_stock.png' %}" id="ruined_stock" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/Ruined_Castle.gif' %}" id = "Ruined_Castle" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_wall2.png' %}" id="ruined_wall2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_wall.png' %}" id="ruined_wall" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_tower2.png' %}" id="ruined_tower2" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_tower1.png' %}" id="ruined_tower1" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_bridge.png' %}" id="ruined_bridge" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_bridge2.png' %}" id="ruined_bridge2" class="background_image d-none" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_house2.png' %}" id="ruined_house2" class="background_image d-none" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_house1.png' %}" id="ruined_house1" class="background_image d-none" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_stock.png' %}" id="ruined_stock" class="background_image d-none" width="100%" height="100%">
 						</div>
-
-						<div id="Castle_area" class="areas">
+						<div class="people">
+							<img src="{% static 'click/img/people/king1.gif' %}" id="king_anim" name = "blue_king" class="background_image">
+							<div id="peasant_field">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
+							</div>
+							<div id="engeneer_field">
+								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
+								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
+							</div>
+							<div id="merchant_field">
+								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
+								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
+								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
+								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
+								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
+							</div>
+						</div>
+						<!--<div id="Castle_area" class="areas">
 
 						</div>
 						<div id="Rich_area" class="areas">
@@ -81,7 +148,7 @@
 						</div>
 						<div id="Peasant_area" class="areas">
 
-						</div>
+						</div> -->
 					</div>
 			</div>
 			<div id="bottom_menu">
@@ -95,22 +162,36 @@
 				<input type="button" class = "switch_btn" name="events" value="Улучшения" id="switch_upgrades">
 				<input type="button" class = "switch_btn" name="close_second_menu" value="Закрыть" id="close_second_menu">
 			</div>
-			<div id = "builds" class="">
+			<div id = "menu_builds" class="">
+				<span class="names_object">Разрушенные здания</span><br>
 				<input type="checkbox" name="ruined_castle" id = "check_ruined_castle" value="" checked><span class = "names_object">Разрушенный замок</span><br>
-				<input type="checkbox" name="ruined_house1" id = "check_ruined_houses" value="" checked><span class = "names_object">Крестьянские дома</span><br>
+				<input type="checkbox" name="ruined_house1" id = "check_ruined_houses" value="" ><span class = "names_object">Крестьянские дома</span><br>
 				<input type="checkbox" name="ruined_bridge1" id = "check_ruined_bridge1" value="" checked><span class = "names_object">Мост1</span><br>
-				<input type="checkbox" name="ruined_bridge2" id = "check_ruined_bridge2"  value="" checked><span class = "names_object">Мост2</span><br>
-				<input type="checkbox" name="ruined_stock" id = "check_ruined_stock" value="" checked><span class = "names_object">Амбар</span><br>
+				<input type="checkbox" name="ruined_bridge2" id = "check_ruined_bridge2"  value=""><span class = "names_object">Мост2</span><br>
+				<input type="checkbox" name="ruined_stock" id = "check_ruined_stock" value="" ><span class = "names_object">Амбар</span><br>
 				<input type="checkbox" name="ruined_tower1" id = "check_ruineds_wall" value="" checked><span class = "names_object">Руины стены</span><br>
 				<input type="checkbox" name="ruined_wall2" id = "check_ruined_deffence_castle" value="" checked><span class = "names_object">Оборона у замка</span><br>
+				<span class="names_object">Здания</span><br>
+				<input type="checkbox" name="castle" id = "check_castle" value=""><span class = "names_object">Замок 1ур</span><br>
+
 			</div>
 			<div id = "people" class="d-none">
+				<span class = "names_object"> Выбор короля: </span>
+				<table>
+					<tr>
+						<td><span class = "names_object"> blue </span></td> <td>	<span class = "names_object"> red </span></td> <td>	<span class = "names_object"> black </span></td>
+					</tr>
+					<tr>
+						<td>	<input type="radio" name="radio_king" id = "radio_king1" checked></td> <td>	<input type="radio" name="radio_king" id = "radio_king2" ></td> <td><input type="radio" name="radio_king" id = "radio_king3"></td>
+					</tr>
+				</table>
 
 			</div>
 			<div id = "events" class="d-none">
 
 			</div>
 		</div>
+
 		<div id="mobile">
 			<div id = "scores">
 				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score" name="scores">{{ score.score }}</p></div>
