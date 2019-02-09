@@ -16,6 +16,13 @@
 	bottom: 0.8%;
 	left: 1.5%;
 }
+#peasant_field2{
+	position: absolute;
+	width: 42%;
+	height: 4.5%;
+	bottom: 0.8%;
+	left: 55%;
+}
 .worker{
 	position: relative;
 }
@@ -26,10 +33,117 @@
 	bottom: 9%;
 	left: 1.5%;
 }
+#engeneer_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 9%;
+	left: 55%;
+}
 #merchant_field{
 	position: absolute;
 	width: 45%;
 	height: 3%;
 	bottom: 22%;
 	left: 1.5%;
+}
+#merchant_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 22%;
+	left: 55%;
+}
+#scientist_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 35%;
+	left: 1.5%;
+}
+#scientist_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 35%;
+	left: 55%;
+}
+#thief_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 42%;
+	left: 1.5%;
+	z-index: 1;
+}
+#thief_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 42%;
+	left: 55%;
+	z-index: 1;
+}
+#footer_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 52%;
+	left: 1.5%;
+	z-index: 1;
+}
+#footer_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 52%;
+	left: 55%;
+	z-index: 1;
+}
+#archer_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 64%;
+	left: 1.5%;
+	z-index: 1;
+}
+#archer_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 64%;
+	left: 55%;
+		z-index: 1;
+}
+.zindex2{
+	z-index: 2;
+}
+#monk_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 71%;
+	left: 1.5%;
+}
+#monk_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 71%;
+	left: 55%;
+}
+#rich_field{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 80%;
+	left: 1.5%;
+}
+#rich_field2{
+	position: absolute;
+	width: 45%;
+	height: 3%;
+	bottom: 80%;
+	left: 55%;
 }

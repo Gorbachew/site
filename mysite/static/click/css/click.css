@@ -23,8 +23,14 @@
 	height: 30%;
 	display: flex;
 }
-.scores_icon{
+.coin_icon{
+	margin: 5px 5px 5px 5px;
 	width: 20%;
+	height: 80%;
+}
+.coin_for_minutes_icon{
+	margin: 5px 5px 5px 5px;
+	width: 27%;
 	height: 80%;
 }
 #coin{
@@ -104,9 +110,13 @@
 }
 /* VISUAL_BLOCK */
 /* SECOND_BLOCK */
+
+
+
+
 #second_menu{
 	width: 25%;
-	height: 100%;
+	height: 625px;
 	background: blue;
 	display: flex;
 	flex-wrap: wrap;
@@ -129,9 +139,21 @@
 }
 #menu_builds{
 	width: 100%;
-	height: 90%;
+	height: 100%;
 	background: black;
+	overflow: auto;
 }
+
+.button_menu_builds{
+	width: 100%;
+}
+.button_menu_people{
+	width: 100%;
+}
+
+/*close_menu_builds*/
+
+
 #people{
 	width: 100%;
 	height: 90%;
@@ -225,7 +247,6 @@
 		height: 100%;
 	}
 }
-
 
 
 

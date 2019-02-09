@@ -11,12 +11,13 @@
 	<div id="kingdom">
 		<div id ="first_menu">
 			<div id = "scores">
-				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score" name="scores">{{ score.score }}</p></div>
-				<div class = "div_score"><img class = "scores_icon" src="{% static 'click/img/money/onerub.png' %}"><p id="score_cash" name="scores">{{ score.cash }}</p></div>
+				<div class = "div_score"><img class = "coin_icon" src="{% static 'click/img/icon/coin.png' %}"><p id="score" name="scores">{{ score.score|floatformat:"0" }}</p></div>
+				<div class = "div_score"><img class = "coin_for_minutes_icon" src="{% static 'click/img/icon/coin_for_minutes.png' %}"><p id="score_cash" name="scores">{{ score.cash }}</p></div>
+				<div class = "div_score"><img class = "coin_icon" src="{% static 'click/img/icon/food.png' %}"><p id="score_cash" name="scores">{{ score.cash }}</p></div>
+				<p class = "d-none" id="score_builds" name="scores">{{ score.builds }}</p>
 			</div>
 			<div id = "coin">
-				<img id='plus_button' class='plus_button' name = 'plus_button' src="" value=""><!--{% static 'click/img/money/onerub.png' %}-->
-				<span class = 'd-none' id = 'currency' >{{score.currency }}</span>
+				<img id='plus_button' class='plus_button' name = 'plus_button' src="/static/click/img/icon/coin.png" value=""><!--{% static 'click/img/money/onerub.png' %}-->
 			</div>
 			<div id = "statistic">
 				<p style="color: white; font-size: 18pt;">Upgrades</p>
@@ -40,84 +41,33 @@
 						</div>
 
 						<div id="builds">
-							<!-- road_and_bridge -->
-							<img src="{% static 'click/img/builds/road_and_bridge.png' %}" id="road_and_bridge" class="background_image" width="100%" height="100%">
-							<!-- Level_One -->
-							<img src="{% static 'click/img/builds/1pigsty.gif' %}" id="pigsty" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/1shack.gif' %}" id="shack" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/1stock.gif' %}" id="stock" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/1village_head_red.gif' %}" id="village_head_red" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/1field_left.gif' %}" id="field_left" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/1field_right.gif' %}" id="field_right" class="background_image" width="100%" height="100%">
-							<!-- Level_Two -->
-							<img src="{% static 'click/img/builds/2master_cart.gif' %}" id="2master_cart" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/2forge.gif' %}" id="2forge" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/2mill.gif' %}" id="2mill" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/2woodcutter.gif' %}" id="2woodcutter" class="background_image" width="100%" height="100%">
-							<!-- Level_Tree -->
-							<img src="{% static 'click/img/builds/3Trade_Shop.gif' %}" id="3Trade_Shop" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/3Market.gif' %}" id="3Market" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/3Merchants_Guild_red.gif' %}" id="3Merchants_Guild_red" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/3Trade_stock.gif' %}" id="3Trade_stock" class="background_image" width="100%" height="100%">
-							<!-- Level_Four -->
-							<img src="{% static 'click/img/builds/4clerk_house.gif' %}" id="4clerk_house" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/4library.gif' %}" id="4library" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/4scientist_house.gif' %}" id="4scientist_house" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/4writer_house.gif' %}" id="4writer_house" class="background_image" width="100%" height="100%">
-							<!-- Level_five -->
-							<img src="{% static 'click/img/builds/5master_thief.gif' %}" id="5master_thief" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/5sale_hause.gif' %}" id="5sale_hause" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/5strange-hause.gif' %}" id="5strange-hause" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/5tavern.gif' %}" id="5tavern" class="background_image" width="100%" height="100%">
-							<!-- Level_Six -->
-							<img src="{% static 'click/img/builds/6watch_tower.gif' %}" id="6watch_tower" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/6Checkpoint.gif' %}" id="6Checkpoint" class="background_image" width="100%" height="100%">
+
 
 						</div>
 
 						<div id="ruined_builds">
-							<img src="{% static 'click/img/builds/ruined/Ruined_Castle.gif' %}" id = "Ruined_Castle" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_wall2.png' %}" id="ruined_wall2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_wall.png' %}" id="ruined_wall" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_tower2.png' %}" id="ruined_tower2" class="background_image" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_tower1.png' %}" id="ruined_tower1" class="background_image" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/Ruined_Castle.gif' %}" id = "Ruined_Castle" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_wall2.png' %}" id="ruined_wall2" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_wall.png' %}" id="ruined_wall" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_tower2.png' %}" id="ruined_tower2" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_tower1.png' %}" id="ruined_tower1" class="background_image " width="100%" height="100%">
 							<img src="{% static 'click/img/builds/ruined/ruined_bridge.png' %}" id="ruined_bridge" class="background_image " width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_bridge2.png' %}" id="ruined_bridge2" class="background_image d-none" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_house2.png' %}" id="ruined_house2" class="background_image d-none" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_house1.png' %}" id="ruined_house1" class="background_image d-none" width="100%" height="100%">
-							<img src="{% static 'click/img/builds/ruined/ruined_stock.png' %}" id="ruined_stock" class="background_image d-none" width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_bridge2.png' %}" id="ruined_bridge2" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_house2.png' %}" id="ruined_house2" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_house1.png' %}" id="ruined_house1" class="background_image " width="100%" height="100%">
+							<img src="{% static 'click/img/builds/ruined/ruined_stock.png' %}" id="ruined_stock" class="background_image " width="100%" height="100%">
 						</div>
 						<div class="people">
-							<img src="{% static 'click/img/people/king1.gif' %}" id="king_anim" name = "blue_king" class="background_image">
-							<div id="peasant_field">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/peasant.gif' %}" id="peasant" name = "blue_king" class="background_image worker">
-							</div>
-							<div id="engeneer_field">
-								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
-								<img src="{% static 'click/img/people/2engeneer.gif' %}" id="2engeneer" name = "blue_king" class="background_image worker">
-							</div>
-							<div id="merchant_field">
-								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
-								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
-								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
-								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
-								<img src="{% static 'click/img/people/3merchant.gif' %}" id="3merchant" class="background_image worker">
-							</div>
+							<img src="{% static 'click/img/people/king2.gif' %}" id="king_anim" name = "king" class="background_image">
+							<div id="peasant_field"></div><div id="peasant_field2"></div>
+							<div id="engeneer_field"></div><div id="engeneer_field2"></div>
+							<div id="merchant_field"></div><div id="merchant_field2"></div>
+							<div id="scientist_field"></div><div id="scientist_field2"></div>
+							<div id="thief_field"></div><div id="thief_field2"></div>
+							<div id="footer_field"></div><div id="footer_field2"></div>
+							<div id="archer_field"></div><div id="archer_field2"></div>
+							<div id="monk_field"></div><div id="monk_field2"></div>
+							<div id="rich_field"></div><div id="rich_field2"></div>
 						</div>
 						<!--<div id="Castle_area" class="areas">
 
@@ -163,19 +113,83 @@
 				<input type="button" class = "switch_btn" name="close_second_menu" value="Закрыть" id="close_second_menu">
 			</div>
 			<div id = "menu_builds" class="">
+				<!-- lvl 1 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_11">Лачуга</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_12">Амбар</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_13">Староста</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_14">Свинарник</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_15">Левое поле</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_16">Правое поле</button>
+				<!-- lvl 2 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_21">Дом Дровосека</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_22">Мастерская</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_23">Мельница</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_24">Кузня</button>
+				<!-- lvl 3 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_31">Торговая лавка</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_32">Склад</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_33">Магазин</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_34">Торговая гильдия</button>
+				<!-- lvl 4 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_41">Дом Писаря</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_42">Дом Ученого</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_43">Дом Поэта</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_44">Музей</button>
+				<!-- lvl 5 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_51">Заброшенный дом</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_52">Таверна</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_53">Дом на продажу</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_54">Дом главы воров</button>
+				<!-- lvl 6 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_61">Дозорная вышка</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_62">Блокпост</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_63">Палаточный лагерь</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_64">Казарма</button>
+				<!-- lvl 7 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_71">Северная башня</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_72">Башня с баллистой</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_73">Арсенал</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_74">Пост Начальника стражи</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_75">Стена</button>
+				<!-- lvl 8 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_81">Храм</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_82">Церковь</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_83">Общежитие</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_84">Лавра</button>
+				<!-- lvl 9 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_91">Роскошный дом</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_92">Цирк</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_93">Дом мэра</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_94">Резиденция</button>
+				<!-- lvl 10 -->
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_101">Деревянный замок</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_102">Крепость</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_103">Тюрьма</button>
+				<button class = "button_menu_builds" type="button" name="raz" id="build_btn_104">Палаты ордена</button>
+				<!--
 				<span class="names_object">Разрушенные здания</span><br>
-				<input type="checkbox" name="ruined_castle" id = "check_ruined_castle" value="" checked><span class = "names_object">Разрушенный замок</span><br>
+				<input type="checkbox" name="ruined_castle" id = "check_ruined_castle" value="" ><span class = "names_object">Разрушенный замок</span><br>
 				<input type="checkbox" name="ruined_house1" id = "check_ruined_houses" value="" ><span class = "names_object">Крестьянские дома</span><br>
-				<input type="checkbox" name="ruined_bridge1" id = "check_ruined_bridge1" value="" checked><span class = "names_object">Мост1</span><br>
+				<input type="checkbox" name="ruined_bridge1" id = "check_ruined_bridge1" value="" ><span class = "names_object">Мост1</span><br>
 				<input type="checkbox" name="ruined_bridge2" id = "check_ruined_bridge2"  value=""><span class = "names_object">Мост2</span><br>
 				<input type="checkbox" name="ruined_stock" id = "check_ruined_stock" value="" ><span class = "names_object">Амбар</span><br>
-				<input type="checkbox" name="ruined_tower1" id = "check_ruineds_wall" value="" checked><span class = "names_object">Руины стены</span><br>
+				<input type="checkbox" name="ruined_tower1" id = "check_ruineds_wall" value="" ><span class = "names_object">Руины стены</span><br>
 				<input type="checkbox" name="ruined_wall2" id = "check_ruined_deffence_castle" value="" checked><span class = "names_object">Оборона у замка</span><br>
 				<span class="names_object">Здания</span><br>
 				<input type="checkbox" name="castle" id = "check_castle" value=""><span class = "names_object">Замок 1ур</span><br>
-
+				-->
 			</div>
 			<div id = "people" class="d-none">
+				<button class = "button_menu_people" type="button" name="raz" id="people_peasant">Купить крестьянина</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_engeneer">Купить инженера</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_merchant">Купить торговца</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_scientist">Купить ученого</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_thief">Купить вора</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_footer">Купить война</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_archer">Купить защитника</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_monk">Купить монаха</button>
+				<button class = "button_menu_people" type="button" name="raz" id="people_rich">Купить чиновника</button>
+				<!--
 				<span class = "names_object"> Выбор короля: </span>
 				<table>
 					<tr>
@@ -185,8 +199,10 @@
 						<td>	<input type="radio" name="radio_king" id = "radio_king1" checked></td> <td>	<input type="radio" name="radio_king" id = "radio_king2" ></td> <td><input type="radio" name="radio_king" id = "radio_king3"></td>
 					</tr>
 				</table>
+			-->
 
 			</div>
+
 			<div id = "events" class="d-none">
 
 			</div>
@@ -301,6 +317,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'click/js/engine.js' %}"></script>
-<script src="{% static 'click/js/objects.js' %}"></script>
+<script type="text/javascript" src="{% static 'click/js/engine.js' %}"></script>
+<script type="text/javascript" src="{% static 'click/js/objects.js' %}"></script>
 {% endblock %}
